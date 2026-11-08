@@ -75,6 +75,9 @@ def fetch_cftc(status: dict) -> None:
 def fetch_fred(status: dict) -> None:
     for s in CONFIG["fred"]:
         _run(status, f"fred:{s}", lambda s=s: store.upsert("fred", market.fred(s), ["date", "series"]))
+    # Fresher than FRED for the yen-carry signal; stored alongside FRED series as "macro".
+    _run(status, "ecb:USDJPY", lambda: store.upsert("fred", market.ecb_usdjpy(), ["date", "series"]))
+    _run(status, "mof:JGB2Y", lambda: store.upsert("fred", market.mof_jgb2y(), ["date", "series"]))
 
 
 def fetch_asia_indices(status: dict) -> None:

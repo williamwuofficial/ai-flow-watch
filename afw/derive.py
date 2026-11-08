@@ -236,6 +236,48 @@ def foreign_flow_signal(closes, series, sid, name, table, index, scale, unit, di
     )
 
 
+CARRY_UNWIND = -5.0   # USD/JPY 20-day % change that marks an unwind in progress
+CARRY_WARN = -3.0
+CARRY_CROWDED = 20    # leveraged-fund net yen position in its most-short 20% of the last 3 years
+
+
+def carry_signal(cf_all: pd.DataFrame, series: dict) -> dict:
+    """Yen carry stress. Backtest 2016–2026: red on ~3% of days (2016, Jan 2019, Mar 2020,
+    late 2022, Aug 2024, Apr 2025), amber ~23%."""
+    fr = store.read("fred").pivot(index="date", columns="series", values="value").sort_index()
+    if "USDJPY" not in fr:
+        return signal(10, "Yen carry trade stress", "grey", "collecting", "No USD/JPY data yet.", "carry")
+    fx = fr["USDJPY"].dropna()
+    y = cf_all[cf_all["contract"] == "Japanese yen"].set_index("date").sort_index()
+    lev = (y["lev_money_positions_long"] - y["lev_money_positions_short"]) / y["open_interest_all"] * 100
+    pct = lev.rolling(156, min_periods=52).rank(pct=True) * 100
+    gap = (fr["DGS2"] - fr["JGB2Y"]).dropna() if {"DGS2", "JGB2Y"} <= set(fr) else pd.Series(dtype=float)
+
+    d = pd.DataFrame({"usdjpy": fx})
+    d["r20"] = (d["usdjpy"] / d["usdjpy"].shift(20) - 1) * 100
+    d["lev"] = lev.reindex(d.index, method="ffill")
+    d["lev_pct"] = pct.reindex(d.index, method="ffill")
+    d["gap"] = gap.reindex(d.index, method="ffill")
+    series["carry"] = columns(d, ["usdjpy", "r20", "lev", "gap"])
+
+    last = d.iloc[-1]
+    crowded = last["lev_pct"] <= CARRY_CROWDED
+    if last["r20"] <= CARRY_UNWIND:
+        st, how = "red", "Yen rallying fast: an unwind looks under way"
+    elif crowded or last["r20"] <= CARRY_WARN:
+        st, how = "amber", ("Hedge funds are crowded short the yen" if crowded else "Yen strengthening") + ": fuel for an unwind"
+    else:
+        st, how = "green", "Yen shorts not crowded and the yen is steady"
+    gap_txt = f" US–Japan 2-year gap {last['gap']:.2f} pts." if not math.isnan(last["gap"]) else ""
+    return signal(
+        10, "Yen carry trade stress", st, f"{last['r20']:+.1f}% USD/JPY",
+        f"{how}. USD/JPY {last['usdjpy']:.1f}, {last['r20']:+.1f}% over 20 days (reversing at ≤{CARRY_UNWIND:.0f}%). "
+        f"Hedge funds net {last['lev']:+.1f}% of yen futures OI ({ordinal(last['lev_pct'])} percentile, 3 years; "
+        f"crowded at ≤{CARRY_CROWDED}th).{gap_txt} FX through {d.index[-1]:%d %b}.",
+        "carry",
+    )
+
+
 # ---------- main ----------
 
 def build() -> dict:
@@ -351,7 +393,9 @@ def build() -> dict:
     )
 
     # 7 CFTC asset-manager positioning
-    cf = store.read("cftc")
+    cf_all = store.read("cftc")
+    equity = [c["name"] for c in CONFIG["cftc"] if c.get("use") == "equity"]
+    cf = cf_all[cf_all["contract"].isin(equity)].copy()
     oi = cf["open_interest_all"]
     cf["am"] = (cf["asset_mgr_positions_long"] - cf["asset_mgr_positions_short"]) / oi * 100
     cf["lev"] = (cf["lev_money_positions_long"] - cf["lev_money_positions_short"]) / oi * 100
@@ -392,6 +436,9 @@ def build() -> dict:
     signals.append(foreign_flow_signal(
         closes, series, 9, "Korea foreign investor flows", "kospi", "KOSPI", 1e12, "tn KRW", 1,
         "Samsung Electronics and SK Hynix are roughly a third of the index."))
+
+    # 10 yen carry: crowding in yen shorts (fuel) and the speed of any yen rally (the unwind)
+    signals.append(carry_signal(cf_all, series))
 
     # context: macro
     fr = store.read("fred").pivot(index="date", columns="series", values="value").sort_index()

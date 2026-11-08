@@ -33,8 +33,11 @@ prices: [SPY, RSP, QQQ, QQEW, SMH, NVDA, MSFT, AVGO, AMD, TSM, GOOGL, AMZN, META
 ai_basket: [NVDA, MSFT, AVGO, AMD, TSM, GOOGL, AMZN, META]
 
 cftc:
-  # Traders in Financial Futures (futures-only) contract codes
-  - {code: "13874A", name: "E-mini S&P 500"}
-  - {code: "209742", name: "E-mini Nasdaq-100"}
+  # Traders in Financial Futures (futures-only) contract codes. `use` picks the signal:
+  # equity → signal 7 (asset-manager positioning), carry → signal 10 (yen carry crowding).
+  - {code: "13874A", name: "E-mini S&P 500", use: equity}
+  - {code: "209742", name: "E-mini Nasdaq-100", use: equity}
+  - {code: "097741", name: "Japanese yen", use: carry}
 
-fred: [DGS10, BAMLH0A0HYM2, DTWEXBGS]
+# DGS2 is paired with Japan's 2-year JGB yield (MOF) for the US–Japan rate gap.
+fred: [DGS10, DGS2, BAMLH0A0HYM2, DTWEXBGS]

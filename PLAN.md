@@ -27,6 +27,7 @@ The site does not assume the thesis is right. It shows the evidence for and agai
 | 7 | Futures positioning | CFTC TFF: asset-manager net long in E-mini S&P + Nasdaq-100 | Net long ≥1 std below 52w median **and** down ≥3 pts over 4 weeks (roll weeks skipped); hedge-fund net shown for context |
 | 8 | Taiwan foreign flows | TWSE net buy by investor group + TAIEX | 20d foreign net selling **and** TAIEX down over the same 20d (selling not absorbed); selling with the index up = weakening |
 | 9 | Korea foreign flows | KOSPI net buy by investor group (Naver Finance) + KOSPI | Same rule as Taiwan |
+| 10 | Yen carry stress | USD/JPY (ECB), CFTC leveraged-fund net yen futures, US 2y (FRED) − JGB 2y (MOF) | USD/JPY −5% in 20d = reversing; −3% or yen shorts in most-crowded 20% of 3y = weakening |
 
 Each signal is green / amber / red with a one-line reason. Rules live in `afw/derive.py`.
 
@@ -46,6 +47,8 @@ Each signal is green / amber / red with a one-line reason. Rules live in `afw/de
 | Naver `m.stock.naver.com/api/index/KOSPI/trend?bizdate=` | KOSPI net buy by foreign / institution / individual (100M KRW); "other corporations" (incl. buybacks) is the residual | Unofficial JSON, 1 req/s | Full (backfill script) |
 | Naver `fchart.stock.naver.com/sise.nhn?symbol=KOSPI` | KOSPI daily closes | Unofficial XML, one request | ~800 days |
 | TWSE `rwd/en/afterTrading/FMTQIK` | TAIEX daily closes, one month per request | Official | Full |
+| ECB SDMX `EXR/D.JPY+USD.EUR.SP00.A` | USD/JPY (EUR/JPY ÷ EUR/USD), ~1 week fresher than FRED's DEXJPUS | Official CSV | Full |
+| MOF `jgbcme_all.csv` + `jgbcme.csv` | JGB yields by maturity (2y used) | Official CSV | Full |
 
 **Blocked / not usable (as of 2026-11-08):** Yahoo (429 from scripts), Stooq (JS challenge),
 Invesco site/API (406), Vanguard (only monthly, rounded AUM), ICI (403), VanEck (cookie wall),
@@ -97,7 +100,7 @@ ai-flow-watch/
 ## Phases
 
 1. **Done in this pass:** fetchers for all sources above, history backfill where available,
-   derive + 9 signals, static site, daily workflow.
+   derive + 10 signals, static site, daily workflow.
 2. Add Japan (JPX), FINRA margin, per-stock TWSE foreign flows for TSMC.
 3. Validate snapshot estimates against SEC N-PORT; add "data quality" page.
 4. Historical drawdown comparison (2020, 2022, 2025) overlaid on the current episode.

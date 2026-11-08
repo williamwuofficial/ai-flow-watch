@@ -10,7 +10,7 @@
 <body>
 <header class="wrap">
   <h1>AI Flow Watch</h1>
-  <p class="lede">Are passive flows into the AI trade reversing? Nine signals from public data, refreshed once a day.
+  <p class="lede">Are passive flows into the AI trade reversing? Ten signals from public data, refreshed once a day.
     Inspired by Michael Green's work on passive investing and Gabaix &amp; Koijen's <em>inelastic markets</em>.</p>
   <p class="meta" id="meta">Loading…</p>
 </header>
@@ -87,6 +87,16 @@
     <div class="chart" data-chart="kospi_index"></div>
   </section>
 
+  <section class="panel" id="carry">
+    <h2>10 · Yen carry trade stress</h2>
+    <p class="sub">Investors borrow cheap yen to buy higher-returning assets, often the same AI mega-caps passive funds own. When the yen jumps they must sell regardless of price. Fuel = hedge funds crowded short the yen; trigger = a fast yen rally (USD/JPY falling) or a narrowing US–Japan rate gap. Most carry runs through FX swaps and bank lending that aren't published, so these are proxies for crowding and stress, not a measure of the trade's size.</p>
+    <div class="chart" data-chart="carry_fx"></div>
+    <div class="grid3">
+      <div><div class="chart small" data-chart="carry_lev"></div></div>
+      <div><div class="chart small" data-chart="carry_gap"></div></div>
+    </div>
+  </section>
+
   <section class="panel" id="context">
     <h2>Context</h2>
     <p class="sub">Price indexed to 100 at the start of the selected range.</p>
@@ -109,11 +119,11 @@
   <section class="panel prose" id="method">
     <h2>Method &amp; caveats</h2>
     <ul>
-      <li><strong>Traffic lights.</strong> Flows: green if the 20-day sum is positive, amber if negative but the 60-day sum is still positive, red if both are negative. Ratios: green above both the 50- and 200-day averages, amber below one, red below both. Taiwan &amp; Korea: "reversing" when foreigners were net sellers over 20 days <em>and</em> the index fell over the same 20 days; "weakening" when foreigners sold but the index still rose (the selling was absorbed); "no reversal" when foreigners were net buyers. Foreign selling alone is not used, because domestic buyers always take the other side; the price they paid is the signal. Positioning: weekly readings during quarterly contract rolls are skipped; it counts as weak when at least 1 standard deviation below its 52-week median and falling when down at least 3 points over 4 weeks: one of those is "weakening", both is "reversing". Historically that fired "reversing" in about 14% of weeks, clustered in 2016, 2018, March 2020, 2022 and early 2025.</li>
+      <li><strong>Traffic lights.</strong> Flows: green if the 20-day sum is positive, amber if negative but the 60-day sum is still positive, red if both are negative. Ratios: green above both the 50- and 200-day averages, amber below one, red below both. Taiwan &amp; Korea: "reversing" when foreigners were net sellers over 20 days <em>and</em> the index fell over the same 20 days; "weakening" when foreigners sold but the index still rose (the selling was absorbed); "no reversal" when foreigners were net buyers. Foreign selling alone is not used, because domestic buyers always take the other side; the price they paid is the signal. Yen carry: "reversing" when USD/JPY falls 5% or more in 20 trading days; "weakening" when it falls 3–5%, or when hedge funds' net yen position is in its most-short 20% of the last 3 years; backtested 2016–2026 that read "reversing" on about 3% of days (2016, Jan 2019, Mar 2020, late 2022, Aug 2024, Apr 2025). Positioning: weekly readings during quarterly contract rolls are skipped; it counts as weak when at least 1 standard deviation below its 52-week median and falling when down at least 3 points over 4 weeks: one of those is "weakening", both is "reversing". Historically that fired "reversing" in about 14% of weeks, clustered in 2016, 2018, March 2020, 2022 and early 2025.</li>
       <li><strong>Creations ≠ end-investor demand day to day.</strong> Market makers create and redeem for inventory, and "heartbeat" trades around index rebalances create and redeem billions within days. Creations over 2% of assets reversed by at least 80% within five days are netted out; share splits are ignored.</li>
       <li><strong>Much passive money is invisible.</strong> 401(k) target-date funds and collective trusts don't report daily. Vanguard (VOO, VTI, VGT) publishes no daily shares outstanding, so the largest S&amp;P 500 fund is missing from daily flows.</li>
       <li><strong>Reporting lag.</strong> Shares outstanding usually reflect the previous day's orders; the impact regression shifts flows by one day.</li>
-      <li><strong>Sources.</strong> State Street, ProShares, Direxion, iShares, Nasdaq, Cboe (delayed quotes), CFTC, FRED, TWSE, Naver Finance (KOSPI investor flows). Several are unofficial endpoints and may break; source health above shows the last successful fetch.</li>
+      <li><strong>Sources.</strong> State Street, ProShares, Direxion, iShares, Nasdaq, Cboe (delayed quotes), CFTC, FRED, ECB (USD/JPY), Japan Ministry of Finance (JGB yields), TWSE, Naver Finance (KOSPI investor flows). Several are unofficial endpoints and may break; source health above shows the last successful fetch.</li>
       <li>Not investment advice.</li>
     </ul>
     <p><a href="https://github.com/williamwuofficial/ai-flow-watch">Source code &amp; raw data on GitHub</a></p>

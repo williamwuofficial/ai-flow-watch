@@ -138,6 +138,34 @@ def taiex_month(d: date) -> pd.DataFrame:
     )
 
 
+def ecb_usdjpy(start: str = START) -> pd.DataFrame:
+    """USD/JPY from ECB reference rates (EUR/JPY ÷ EUR/USD), published each TARGET business day ~16:00 CET."""
+    text = http.get(
+        "https://data-api.ecb.europa.eu/service/data/EXR/D.JPY+USD.EUR.SP00.A",
+        params={"startPeriod": start, "format": "csvdata"},
+        ua=http.PLAIN_UA,
+    ).text
+    df = pd.read_csv(io.StringIO(text), usecols=["CURRENCY", "TIME_PERIOD", "OBS_VALUE"])
+    p = df.pivot(index="TIME_PERIOD", columns="CURRENCY", values="OBS_VALUE").dropna()
+    return pd.DataFrame({"date": pd.to_datetime(p.index), "series": "USDJPY", "value": (p["JPY"] / p["USD"]).to_numpy()})
+
+
+def mof_jgb2y() -> pd.DataFrame:
+    """2-year JGB yield (%) from Japan's Ministry of Finance: full history file + current-month file."""
+    base = "https://www.mof.go.jp/english/policy/jgbs/reference/interest_rate"
+    rows = []
+    for url in (f"{base}/historical/jgbcme_all.csv", f"{base}/jgbcme.csv"):
+        text = http.get(url).content.decode("shift_jis", errors="replace")
+        for line in text.splitlines():
+            m = re.match(r"^(\d{4}/\d{1,2}/\d{1,2}),[^,]*,([^,]*),", line)
+            if m and m.group(2) not in ("", "-"):
+                rows.append((m.group(1), float(m.group(2))))
+    df = pd.DataFrame(rows, columns=["date", "value"])
+    df["date"] = pd.to_datetime(df["date"], format="%Y/%m/%d")
+    df = df[df["date"] >= START]
+    return pd.DataFrame({"date": df["date"], "series": "JGB2Y", "value": df["value"]})
+
+
 def daily_range(day_fn, start: date, end: date, max_days: int) -> pd.DataFrame:
     rows, d = [], start
     while d <= end and len(rows) < max_days:

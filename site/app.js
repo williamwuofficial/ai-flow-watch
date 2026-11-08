@@ -212,6 +212,17 @@
         fmt: (v) => v.toLocaleString(undefined, { maximumFractionDigits: 0 }), title: index, height: 180, xDomain,
       });
     };
+    lineChart(q("carry_fx"), rows(S.carry, ["usdjpy"]), [{ key: "usdjpy", label: "USD/JPY", color: c1 }], {
+      title: "USD/JPY (falling = stronger yen)", fmt: (v) => v.toFixed(2),
+    });
+    lineChart(q("carry_lev"), rows(S.carry, ["lev"]), [{ key: "lev", label: "Hedge funds net", color: c2 }], {
+      title: "Hedge funds' net yen futures, % of OI (negative = short yen)", zero: true, height: 180,
+      fmt: (v) => `${v.toFixed(1)}%`, tickFmt: pctTick,
+    });
+    lineChart(q("carry_gap"), rows(S.carry, ["gap"]), [{ key: "gap", label: "US − Japan 2-year yield", color: c3 }], {
+      title: "US − Japan 2-year yield gap (pts)", height: 180, fmt: (v) => v.toFixed(2),
+    });
+
     asia("twse", { foreign: "Foreign", trusts: "Investment trusts", dealers: "Dealers", other: "Retail & others (residual)" }, "bn TWD", 0, "TAIEX");
     asia("kospi", { foreign: "Foreign", individuals: "Individuals", institutions: "Institutions", other: "Other corporations (residual)" }, "tn KRW", 1, "KOSPI");
 
