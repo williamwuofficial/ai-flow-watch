@@ -90,7 +90,7 @@
       marginLeft: 52,
       marginRight: 12,
       style: { background: "transparent", color: css("--muted"), fontFamily: css("--font"), fontSize: "12px" },
-      x: { type: "utc", label: null, line: false, tickSize: 0 },
+      x: { type: "utc", label: null, line: false, tickSize: 0, domain: opts.xDomain },
       y: { label: opts.yLabel || null, tickFormat: opts.tickFmt, tickSize: 0, nice: true, zero: !!opts.zeroDomain },
       marks,
     });
@@ -184,13 +184,25 @@
       { key: "lev_combined", label: "Hedge funds net", color: c2, width: 1.5 },
     ], { zero: true, fmt: (v) => `${v.toFixed(1)}%`, tickFmt: pctTick });
 
-    lineChart(q("twse"), rows(S.twse, ["s20"]), [{ key: "s20", label: "20-day foreign net buy (bn TWD)", color: c1 }], {
-      zero: true, fmt: (v) => `${v.toFixed(0)}bn`, empty: "Backfilling Taiwan history — check back after the next daily run.",
-    });
-
-    lineChart(q("kospi"), rows(S.kospi, ["s20"]), [{ key: "s20", label: "20-day foreign net buy (tn KRW)", color: c1 }], {
-      zero: true, fmt: (v) => `${v.toFixed(1)}tn`, empty: "Backfilling Korea history — check back after the next daily run.",
-    });
+    // Foreign vs domestic investor groups (cumulative over the visible range) above the index itself.
+    const c4 = css("--series-4");
+    const asia = (key, groups, unit, digits, index) => {
+      const keys = Object.keys(groups);
+      const r = rows(S[key], [...keys, "close"]);
+      const acc = Object.fromEntries(keys.map((k) => [k, 0]));
+      r.forEach((row) => keys.forEach((k) => (row[k] = acc[k] += row[k] || 0)));
+      const xDomain = r.length ? [r[0].date, r[r.length - 1].date] : undefined;
+      const fmt = (v) => `${v >= 0 ? "+" : ""}${v.toFixed(digits)}${unit}`;
+      lineChart(q(`${key}_flows`), r, keys.map((k, i) => ({ key: k, label: groups[k], color: [c1, c2, c3, c4][i] })), {
+        zero: true, fmt, title: `Cumulative net buying since the start of the range (${unit})`, xDomain,
+        empty: "Backfilling history — check back after the next daily run.",
+      });
+      lineChart(q(`${key}_index`), r, [{ key: "close", label: index, color: mute }], {
+        fmt: (v) => v.toLocaleString(undefined, { maximumFractionDigits: 0 }), title: index, height: 180, xDomain,
+      });
+    };
+    asia("twse", { foreign: "Foreign", trusts: "Investment trusts", dealers: "Dealers", other: "Retail & others (residual)" }, "bn TWD", 0, "TAIEX");
+    asia("kospi", { foreign: "Foreign", individuals: "Individuals", institutions: "Institutions", other: "Other corporations (residual)" }, "tn KRW", 1, "KOSPI");
 
     // index to 100 at the start of the visible range
     const ix = rows(S.index, ["SPY", "QQQ", "SMH"]);

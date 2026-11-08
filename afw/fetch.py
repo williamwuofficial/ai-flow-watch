@@ -77,6 +77,23 @@ def fetch_fred(status: dict) -> None:
         _run(status, f"fred:{s}", lambda s=s: store.upsert("fred", market.fred(s), ["date", "series"]))
 
 
+def fetch_asia_indices(status: dict) -> None:
+    """KOSPI (one request) and TAIEX (one request per month, refetching the latest stored month)."""
+    _run(status, "prices:KOSPI", lambda: store.upsert("prices", market.kospi_index(), ["date", "ticker"]))
+
+    def taiex():
+        have = store.read("prices")
+        have = have[have["ticker"] == "TAIEX"] if not have.empty else have
+        d = have["date"].max().date().replace(day=1) if not have.empty else BACKFILL_START.replace(day=1)
+        today, n = date.today(), 0
+        while d <= today:
+            n += store.upsert("prices", market.taiex_month(d), ["date", "ticker"])
+            d = (d.replace(day=28) + timedelta(days=4)).replace(day=1)
+        return n
+
+    _run(status, "prices:TAIEX", taiex)
+
+
 def fetch_daily_flows(status: dict, name: str, day_fn, utc_offset: int, max_days: int) -> None:
     """Incremental one-request-per-day fetch, saved every 20 days so an interrupted backfill keeps its progress."""
 
@@ -108,6 +125,7 @@ def main() -> None:
     status = _load_status()
     if "prices" in only:
         fetch_prices(status)
+        fetch_asia_indices(status)
     if "funds" in only:
         fetch_funds(status)
     if "cftc" in only:

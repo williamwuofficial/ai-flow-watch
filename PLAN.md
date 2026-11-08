@@ -25,8 +25,8 @@ The site does not assume the thesis is right. It shows the evidence for and agai
 | 5 | AI basket vs market | Equal-weight basket of NVDA, MSFT, AVGO, AMD, TSM, GOOGL, AMZN, META vs RSP; SPY top-10 weight | Relative strength breaks trend; concentration rolls over |
 | 6 | Flow price-impact | Rolling 60d regression of SPY return on broad flow (% of AUM) | Slope rising = market more fragile per dollar (informational) |
 | 7 | Futures positioning | CFTC TFF: asset-manager net long in E-mini S&P + Nasdaq-100 | Net long ≥1 std below 52w median **and** down ≥3 pts over 4 weeks (roll weeks skipped); hedge-fund net shown for context |
-| 8 | Taiwan foreign flows | TWSE foreign investor net buy (market-wide) | 20d and 60d foreign net selling |
-| 9 | Korea foreign flows | KOSPI foreign investor net buy (Naver Finance) | 20d and 60d foreign net selling |
+| 8 | Taiwan foreign flows | TWSE net buy by investor group + TAIEX | 20d foreign net selling **and** TAIEX down over the same 20d (selling not absorbed); selling with the index up = weakening |
+| 9 | Korea foreign flows | KOSPI net buy by investor group (Naver Finance) + KOSPI | Same rule as Taiwan |
 
 Each signal is green / amber / red with a one-line reason. Rules live in `afw/derive.py`.
 
@@ -43,7 +43,9 @@ Each signal is green / amber / red with a one-line reason. Rules live in `afw/de
 | CFTC Socrata `gpe5-46if` | Traders in Financial Futures | Official API | Full (2006+) |
 | FRED `fredgraph.csv` | 10y yield, HY spread, broad USD | Official, no key | Full |
 | TWSE `rwd/en/fund/BFI82U` | Institutional investor net buy | Official, throttle ≤1 req/2s | Full (backfill script) |
-| Naver `m.stock.naver.com/api/index/KOSPI/trend?bizdate=` | KOSPI net buy by foreign / institution / individual (100M KRW) | Unofficial JSON, 1 req/s | Full (backfill script) |
+| Naver `m.stock.naver.com/api/index/KOSPI/trend?bizdate=` | KOSPI net buy by foreign / institution / individual (100M KRW); "other corporations" (incl. buybacks) is the residual | Unofficial JSON, 1 req/s | Full (backfill script) |
+| Naver `fchart.stock.naver.com/sise.nhn?symbol=KOSPI` | KOSPI daily closes | Unofficial XML, one request | ~800 days |
+| TWSE `rwd/en/afterTrading/FMTQIK` | TAIEX daily closes, one month per request | Official | Full |
 
 **Blocked / not usable (as of 2026-11-08):** Yahoo (429 from scripts), Stooq (JS challenge),
 Invesco site/API (406), Vanguard (only monthly, rounded AUM), ICI (403), VanEck (cookie wall),
@@ -82,6 +84,10 @@ ai-flow-watch/
   smoothed by the rolling sums, not removed.
 
 ## Caveats (shown on the methodology section)
+
+* Foreign selling in Taiwan/Korea is always matched by domestic buying (flows net to zero), so the
+  signal is the price at which it was absorbed, not the size of the selling. In 2024–26 foreigners
+  sold KOSPI almost continuously while it rose from ~2,700 to ~9,000 and back to ~5,000.
 
 * Creations/redemptions ≠ end-investor demand day-to-day (AP inventory, heartbeat trades).
 * 401(k)/target-date money in mutual funds and CITs is invisible at daily frequency.

@@ -1,5 +1,6 @@
 """Prices (Cboe), futures positioning (CFTC), macro (FRED), Taiwan investor flows (TWSE)."""
 import io
+import re
 from datetime import date, timedelta
 
 import pandas as pd
@@ -103,6 +104,38 @@ def kospi_day(d: date) -> dict:
     if any(vals.values()):
         row.update(foreign_net=vals["foreign"], institution_net=vals["institutional"], individual_net=vals["personal"])
     return row
+
+
+def kospi_index(days: int = 800) -> pd.DataFrame:
+    """KOSPI daily closes from Naver's chart feed (one request covers ~3 years)."""
+    xml = http.get(
+        "https://fchart.stock.naver.com/sise.nhn",
+        params={"symbol": "KOSPI", "timeframe": "day", "count": days, "requestType": 0},
+    ).content.decode("euc-kr", errors="replace")
+    rows = [r.split("|") for r in re.findall(r'data="([^"]+)"', xml)]
+    if not rows:
+        raise ValueError("no KOSPI rows in Naver chart feed")
+    return pd.DataFrame(
+        {"date": pd.to_datetime([r[0] for r in rows], format="%Y%m%d"), "ticker": "KOSPI", "close": [float(r[4]) for r in rows]}
+    )
+
+
+def taiex_month(d: date) -> pd.DataFrame:
+    """TAIEX daily closes for the month containing `d` (TWSE 'Highlights of Daily Trading')."""
+    j = http.get(
+        "https://www.twse.com.tw/rwd/en/afterTrading/FMTQIK",
+        params={"date": d.strftime("%Y%m01"), "response": "json"},
+        delay=2.5,
+    ).json()
+    if j.get("stat") != "OK":
+        return pd.DataFrame(columns=["date", "ticker", "close"])
+    return pd.DataFrame(
+        {
+            "date": pd.to_datetime([r[0] for r in j["data"]], format="%Y/%m/%d"),
+            "ticker": "TAIEX",
+            "close": [float(r[4].replace(",", "")) for r in j["data"]],
+        }
+    )
 
 
 def daily_range(day_fn, start: date, end: date, max_days: int) -> pd.DataFrame:

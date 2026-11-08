@@ -75,14 +75,16 @@
 
   <section class="panel" id="twse">
     <h2>8 · Taiwan foreign investor flows</h2>
-    <p class="sub">Rolling 20-day net buying by foreign investors on the Taiwan Stock Exchange, billions of TWD. Taiwan is the AI hardware supply chain (TSMC).</p>
-    <div class="chart" data-chart="twse"></div>
+    <p class="sub">Net buying by investor group on the Taiwan Stock Exchange, cumulative over the selected range, with the TAIEX below. Taiwan is the AI hardware supply chain (TSMC). Every sale has a buyer, so the groups mirror each other; what matters is whether the index held up while foreigners sold. TWSE does not publish retail flows, so "retail &amp; others" is the residual.</p>
+    <div class="chart" data-chart="twse_flows"></div>
+    <div class="chart" data-chart="twse_index"></div>
   </section>
 
   <section class="panel" id="kospi">
     <h2>9 · Korea foreign investor flows</h2>
-    <p class="sub">Rolling 20-day net buying by foreign investors on KOSPI, trillions of KRW. Korea is the AI memory supply chain (Samsung Electronics, SK Hynix).</p>
-    <div class="chart" data-chart="kospi"></div>
+    <p class="sub">Net buying by investor group on KOSPI, cumulative over the selected range, with the KOSPI below. Korea is the AI memory supply chain (Samsung Electronics, SK Hynix). Naver's data omits other corporations (including company buybacks), so that group is the residual.</p>
+    <div class="chart" data-chart="kospi_flows"></div>
+    <div class="chart" data-chart="kospi_index"></div>
   </section>
 
   <section class="panel" id="context">
@@ -107,7 +109,7 @@
   <section class="panel prose" id="method">
     <h2>Method &amp; caveats</h2>
     <ul>
-      <li><strong>Traffic lights.</strong> Flows: green if the 20-day sum is positive, amber if negative but the 60-day sum is still positive, red if both are negative. Ratios: green above both the 50- and 200-day averages, amber below one, red below both. Positioning: weekly readings during quarterly contract rolls are skipped; it counts as weak when at least 1 standard deviation below its 52-week median and falling when down at least 3 points over 4 weeks: one of those is "weakening", both is "reversing". Historically that fired "reversing" in about 14% of weeks, clustered in 2016, 2018, March 2020, 2022 and early 2025.</li>
+      <li><strong>Traffic lights.</strong> Flows: green if the 20-day sum is positive, amber if negative but the 60-day sum is still positive, red if both are negative. Ratios: green above both the 50- and 200-day averages, amber below one, red below both. Taiwan &amp; Korea: "reversing" when foreigners were net sellers over 20 days <em>and</em> the index fell over the same 20 days; "weakening" when foreigners sold but the index still rose (the selling was absorbed); "no reversal" when foreigners were net buyers. Foreign selling alone is not used, because domestic buyers always take the other side; the price they paid is the signal. Positioning: weekly readings during quarterly contract rolls are skipped; it counts as weak when at least 1 standard deviation below its 52-week median and falling when down at least 3 points over 4 weeks: one of those is "weakening", both is "reversing". Historically that fired "reversing" in about 14% of weeks, clustered in 2016, 2018, March 2020, 2022 and early 2025.</li>
       <li><strong>Creations ≠ end-investor demand day to day.</strong> Market makers create and redeem for inventory, and "heartbeat" trades around index rebalances create and redeem billions within days. Creations over 2% of assets reversed by at least 80% within five days are netted out; share splits are ignored.</li>
       <li><strong>Much passive money is invisible.</strong> 401(k) target-date funds and collective trusts don't report daily. Vanguard (VOO, VTI, VGT) publishes no daily shares outstanding, so the largest S&amp;P 500 fund is missing from daily flows.</li>
       <li><strong>Reporting lag.</strong> Shares outstanding usually reflect the previous day's orders; the impact regression shifts flows by one day.</li>

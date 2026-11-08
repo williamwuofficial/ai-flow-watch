@@ -175,23 +175,63 @@ def flow_signal(sid, group, d: pd.DataFrame, coverage: list[dict]):
     return signal(sid, GROUPS[group], st, pct(last["s20"]), detail, f"flows_{group}")
 
 
-def foreign_flow_signal(series, sid, name, table, scale, unit, digits, what, note):
-    """Rolling 20/60-day foreign net buying on a local exchange, same rule as the ETF flow signals."""
+# Investor groups per market. Naver (Korea) omits "other corporations" (incl. company buybacks) and
+# TWSE omits retail, so each market gets a residual group: every trade has a buyer and a seller,
+# so all groups must net to zero.
+GROUPS_ASIA = {
+    "kospi": lambda d: {
+        "foreign": d["foreign_net"],
+        "individuals": d["individual_net"],
+        "institutions": d["institution_net"],
+        "other": -(d["foreign_net"] + d["individual_net"] + d["institution_net"]),
+    },
+    "twse": lambda d: {
+        "foreign": d["foreign_net"],
+        "trusts": d["trust_net"],
+        "dealers": d["total_net"] - d["foreign_net"] - d["trust_net"],
+        "other": -d["total_net"],
+    },
+}
+
+
+GROUP_LABELS = {
+    "kospi": {"individuals": "individuals", "institutions": "institutions", "other": "other corporations (incl. buybacks)"},
+    "twse": {"trusts": "investment trusts", "dealers": "dealers", "other": "retail and others"},
+}
+
+
+def foreign_flow_signal(closes, series, sid, name, table, index, scale, unit, digits, note):
+    """Foreign selling only counts as a reversal when the index fell over the same window.
+
+    Domestic buyers always absorb foreign selling in aggregate (net flows sum to zero), so the
+    informative part is the price it took: rising = domestic demand soaked it up, falling = buyers
+    only stepped in lower.
+    """
     df = store.read(table)
     if df.empty or "foreign_net" not in df:
         return signal(sid, name, "grey", "collecting", "No data yet.", table)
     df = df.dropna(subset=["foreign_net"]).set_index("date").sort_index()
-    df["f"] = df["foreign_net"] / scale
-    df["s20"] = df["f"].rolling(20, min_periods=20).sum()
-    df["s60"] = df["f"].rolling(60, min_periods=60).sum()
-    series[table] = columns(df, ["f", "s20", "s60"])
-    last = df.iloc[-1]
-    if math.isnan(last["s60"]):
-        return signal(sid, name, "grey", "collecting", f"Backfilling: {len(df)} days so far.", table)
+    g = pd.DataFrame({k: v / scale for k, v in GROUPS_ASIA[table](df).items()})
+    g["close"] = closes[index].reindex(g.index) if index in closes else np.nan
+    g["f20"] = g["foreign"].rolling(20, min_periods=20).sum()
+    g["r20"] = (g["close"] / g["close"].shift(20) - 1) * 100
+    series[table] = columns(g, list(g.columns))
+    last = g.iloc[-1]
+    if math.isnan(last["f20"]) or math.isnan(last["r20"]):
+        return signal(sid, name, "grey", "collecting", f"Backfilling: {len(g)} days so far.", table)
     v = lambda x: f"{x:+,.{digits}f}{unit.split()[0]} {unit.split()[1]}"  # e.g. "+1.2tn KRW"
+    domestic = g[[c for c in GROUPS_ASIA[table](df) if c != "foreign"]].tail(20).sum()
+    top = GROUP_LABELS[table][domestic.idxmax()]
+    if last["f20"] >= 0:
+        st, how = "green", "Foreigners are net buyers"
+    elif last["r20"] >= 0:
+        st, how = "amber", f"Foreign selling absorbed with the index still up, mostly by {top} ({v(domestic.max())})"
+    else:
+        st, how = "red", f"Foreign selling not absorbed: the index fell while {top} bought most ({v(domestic.max())})"
     return signal(
-        sid, name, flow_state(last["s20"], last["s60"]), v(last["s20"]),
-        f"{what}: 20d {v(last['s20'])}, 60d {v(last['s60'])} through {df.index[-1]:%d %b}. {note}",
+        sid, name, st, v(last["f20"]),
+        f"{how}. 20d foreign net {v(last['f20'])}; {index} {last['r20']:+.1f}% over the same 20 days, "
+        f"through {g.index[-1]:%d %b}. {note}",
         table,
     )
 
@@ -347,11 +387,11 @@ def build() -> dict:
 
     # 8–9 foreign investors in the AI hardware supply chain's home markets
     signals.append(foreign_flow_signal(
-        series, 8, "Taiwan foreign investor flows", "twse", 1e9, "bn TWD", 0,
-        "Foreign net buying on TWSE", "TSMC is roughly 40% of the index."))
+        closes, series, 8, "Taiwan foreign investor flows", "twse", "TAIEX", 1e9, "bn TWD", 0,
+        "TSMC is roughly 40% of the index."))
     signals.append(foreign_flow_signal(
-        series, 9, "Korea foreign investor flows", "kospi", 1e12, "tn KRW", 1,
-        "Foreign net buying on KOSPI", "Samsung Electronics and SK Hynix are roughly a third of the index."))
+        closes, series, 9, "Korea foreign investor flows", "kospi", "KOSPI", 1e12, "tn KRW", 1,
+        "Samsung Electronics and SK Hynix are roughly a third of the index."))
 
     # context: macro
     fr = store.read("fred").pivot(index="date", columns="series", values="value").sort_index()
