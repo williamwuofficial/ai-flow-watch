@@ -39,13 +39,18 @@
   function legend(items) {
     const el = document.createElement("div");
     el.className = "legend";
-    el.innerHTML = items.map((s) => `<span><i style="background:${s.color};height:${s.width || 2}px"></i>${s.label}</span>`).join("");
+    const swatch = (s) =>
+      s.dot
+        ? `<i style="width:9px;height:9px;border-radius:50%;box-sizing:border-box;border:2px solid ${s.color};background:${s.hollow ? "transparent" : s.color}"></i>`
+        : `<i style="background:${s.color};height:${s.width || 2}px"></i>`;
+    el.innerHTML = items.map((s) => `<span>${swatch(s)}${s.label}</span>`).join("");
     return el;
   }
 
   /**
    * Line chart on one axis. series: [{key, label, color, width, opacity}]
-   * opts: {zero, yLabel, fmt, title}
+   * opts: {zero, yLabel, fmt, title, markers: [{date, v, label, color, hollow}]} — markers are
+   * single estimates drawn as labelled dots (e.g. signal 11's lower-confidence tiers).
    */
   // One broken chart (bad data, missing slot) must not stop the rest of the page from drawing.
   function lineChart(el, data, series, opts = {}) {
@@ -70,7 +75,8 @@
       h.textContent = opts.title;
       el.append(h);
     }
-    if (series.length > 1) el.append(legend(series));
+    const markers = opts.markers || [];
+    if (series.length > 1 || markers.length) el.append(legend([...series, ...markers.map((m) => ({ ...m, dot: true }))]));
     const long = series.flatMap((s) => pts.filter((r) => r[s.key] != null).map((r) => ({ date: r.date, v: r[s.key], s: s.label })));
     const fmt = opts.fmt || ((v) => v.toFixed(2));
     const colorOf = Object.fromEntries(series.map((s) => [s.label, s.color]));
@@ -83,6 +89,15 @@
           x: "date", y: "v", stroke: s.color, strokeWidth: s.width || 2, strokeOpacity: s.opacity ?? 1, curve: "linear",
         })
       ),
+      ...(markers.length
+        ? [
+            Plot.dot(markers, {
+              x: "date", y: "v", r: 5, stroke: (m) => m.color, strokeWidth: 2,
+              fill: (m) => (m.hollow ? css("--surface") : m.color), title: (m) => `${m.label}: ${fmt(m.v)}`,
+            }),
+            Plot.text(markers, { x: "date", y: "v", text: (m) => `${m.short || m.label} ${fmt(m.v)}`, textAnchor: "end", dx: -10, fill: css("--ink-2") }),
+          ]
+        : []),
       Plot.ruleX(long, Plot.pointerX({ x: "date", stroke: css("--axis") })),
       Plot.dot(long, Plot.pointerX({ x: "date", y: "v", fill: (d) => colorOf[d.s], r: 4, stroke: css("--surface"), strokeWidth: 2 })),
       Plot.tip(
@@ -231,10 +246,21 @@
       title: "US − Japan 2-year yield gap (pts)", height: 180, fmt: (v) => v.toFixed(2),
     });
 
-    lineChart(q("passive"), rows(S.passive, ["etf_pct", "funds_pct"]), [
-      { key: "etf_pct", label: "ETFs (measured floor)", color: c1 },
+    // Medium/low tiers are single current estimates (no history), so they are dots at the latest quarter.
+    const passiveRows = rows(S.passive, ["etf_pct", "funds_pct"]);
+    const tiersNow = DATA.signals.find((g) => g.id === 11)?.tiers || [];
+    const lastQ = passiveRows.length ? passiveRows[passiveRows.length - 1].date : null;
+    const tierMarker = (conf, color, hollow) => {
+      const t = tiersNow.find((x) => x.confidence === conf);
+      return t && lastQ ? { date: lastQ, v: t.value, label: `${conf} confidence: ${t.label.toLowerCase()} (latest estimate)`, short: conf, color, hollow } : null;
+    };
+    lineChart(q("passive"), passiveRows, [
+      { key: "etf_pct", label: "High confidence: ETFs (measured floor)", color: c1 },
       { key: "funds_pct", label: "All ETFs + mutual funds, active included (ceiling for funds)", color: c2 },
-    ], { title: "Share of US stock market value held (%), quarterly", fmt: (v) => `${v.toFixed(1)}%`, tickFmt: pctTick, zeroDomain: true });
+    ], {
+      title: "Share of US stock market value held (%), quarterly", fmt: (v) => `${v.toFixed(1)}%`, tickFmt: pctTick, zeroDomain: true,
+      markers: [tierMarker("Medium", c3, false), tierMarker("Low", c4, true)].filter(Boolean),
+    });
 
     asia("twse", { foreign: "Foreign", trusts: "Investment trusts", dealers: "Dealers", other: "Retail & others (residual)" }, "bn TWD", 0, "TAIEX");
     asia("kospi", { foreign: "Foreign", individuals: "Individuals", institutions: "Institutions", other: "Other corporations (residual)" }, "tn KRW", 1, "KOSPI");
