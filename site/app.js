@@ -46,7 +46,18 @@
    * Line chart on one axis. series: [{key, label, color, width, opacity}]
    * opts: {zero, yLabel, fmt, title}
    */
+  // One broken chart (bad data, missing slot) must not stop the rest of the page from drawing.
   function lineChart(el, data, series, opts = {}) {
+    if (!el) return console.warn("chart slot missing", series.map((s) => s.key));
+    try {
+      drawLineChart(el, data, series, opts);
+    } catch (e) {
+      console.error("chart failed", series.map((s) => s.key), e);
+      el.innerHTML = `<div class="empty">This chart could not be drawn (${e.message}).</div>`;
+    }
+  }
+
+  function drawLineChart(el, data, series, opts = {}) {
     el.replaceChildren();
     const pts = data.filter((r) => series.some((s) => r[s.key] != null));
     if (!pts.length) {
