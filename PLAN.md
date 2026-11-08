@@ -104,3 +104,8 @@ ai-flow-watch/
 2. Add Japan (JPX), FINRA margin, per-stock TWSE foreign flows for TSMC.
 3. Validate snapshot estimates against SEC N-PORT; add "data quality" page.
 4. Historical drawdown comparison (2020, 2022, 2025) overlaid on the current episode.
+
+
+## Signal 11: how passive is the market (context)
+
+Not a traffic light. Three tiers by confidence: **high** = US ETF equity holdings ÷ market value of corporate equities (Fed Z.1 via FRED: BOGZ1LM563064100Q / BOGZ1LM893064105Q), a floor; **medium** = (ETF + mutual fund equity holdings) × ICI index share of domestic-equity fund assets (hand-updated in `config/universe.yml`, ICI blocks scripts); **low** = medium × Chinco & Sammon's 2020 ratio of total passive ownership to index-fund holdings (37.8% / 15%). Quarterly, ~10-week lag.

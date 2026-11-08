@@ -107,6 +107,17 @@ a { color: var(--series-1); }
 .badge.amber { color: var(--warning-ink); }
 .badge.green { color: var(--good-ink); }
 .badge.grey { color: var(--muted); }
+.badge.info { color: var(--ink-2); }
+.card.info { border-left-color: var(--series-1); grid-column: 1 / -1; }
+.tiers { margin: 6px 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px 16px; }
+.tier { border-top: 1px solid var(--border); padding-top: 6px; }
+.tier dt { font-size: 12.5px; font-weight: 600; }
+.tier dd { margin: 2px 0 0; font-size: 12.5px; color: var(--ink-2); }
+.tier dd strong { font-size: 18px; color: var(--ink); margin-right: 4px; }
+.tier .conf { display: inline-block; font-size: 11px; font-weight: 600; padding: 0 6px; border-radius: 999px; border: 1px solid var(--border); margin-right: 4px; }
+.conf-high .conf { border-style: solid; }
+.conf-medium .conf { border-style: dashed; }
+.conf-low .conf { border-style: dotted; color: var(--muted); }
 
 .toolbar {
   position: sticky; top: 0; z-index: 5;

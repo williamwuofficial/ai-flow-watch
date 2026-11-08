@@ -10,7 +10,7 @@
 <body>
 <header class="wrap">
   <h1>AI Flow Watch</h1>
-  <p class="lede">Are passive flows into the AI trade reversing? Ten signals from public data, refreshed once a day.
+  <p class="lede">Are passive flows into the AI trade reversing? Ten signals from public data, refreshed once a day, plus a gauge of how passive the market already is.
     Inspired by Michael Green's work on passive investing and Gabaix &amp; Koijen's <em>inelastic markets</em>.</p>
   <p class="meta" id="meta">Loading…</p>
 </header>
@@ -97,6 +97,12 @@
     </div>
   </section>
 
+  <section class="panel" id="passive">
+    <h2>11 · How passive is the market</h2>
+    <p class="sub">Context for every other signal: the more of the market that buys and sells regardless of price, the less money it takes to move it. Nobody publishes a single number, so this shows three estimates by confidence. <strong>High:</strong> stocks held by US ETFs ÷ the market value of all corporate equities (Fed Z.1), a floor because index mutual funds are left out. <strong>Medium:</strong> stocks held by all US ETFs and mutual funds × ICI's index share of domestic-equity fund assets (entered by hand). <strong>Low:</strong> the medium figure scaled by Chinco &amp; Sammon's finding that passive ownership, counting pensions, separate accounts and other index-tracking mandates, was about 2.5× index-fund holdings in 2020. The chart shows the two measured lines; the true index-fund share sits between them. Updated quarterly, about 10 weeks after quarter end.</p>
+    <div class="chart" data-chart="passive"></div>
+  </section>
+
   <section class="panel" id="context">
     <h2>Context</h2>
     <p class="sub">Price indexed to 100 at the start of the selected range.</p>
@@ -123,7 +129,7 @@
       <li><strong>Creations ≠ end-investor demand day to day.</strong> Market makers create and redeem for inventory, and "heartbeat" trades around index rebalances create and redeem billions within days. Creations over 2% of assets reversed by at least 80% within five days are netted out; share splits are ignored.</li>
       <li><strong>Much passive money is invisible.</strong> 401(k) target-date funds and collective trusts don't report daily. Vanguard (VOO, VTI, VGT) publishes no daily shares outstanding, so the largest S&amp;P 500 fund is missing from daily flows.</li>
       <li><strong>Reporting lag.</strong> Shares outstanding usually reflect the previous day's orders; the impact regression shifts flows by one day.</li>
-      <li><strong>Sources.</strong> State Street, ProShares, Direxion, iShares, Nasdaq, Cboe (delayed quotes), CFTC, FRED, ECB (USD/JPY), Japan Ministry of Finance (JGB yields), TWSE, Naver Finance (KOSPI investor flows). Several are unofficial endpoints and may break; source health above shows the last successful fetch.</li>
+      <li><strong>Sources.</strong> State Street, ProShares, Direxion, iShares, Nasdaq, Cboe (delayed quotes), CFTC, FRED (incl. Fed Z.1 financial accounts), ICI (index share, entered by hand), Chinco &amp; Sammon (2025), ECB (USD/JPY), Japan Ministry of Finance (JGB yields), TWSE, Naver Finance (KOSPI investor flows). Several are unofficial endpoints and may break; source health above shows the last successful fetch.</li>
       <li>Not investment advice.</li>
     </ul>
     <p><a href="https://github.com/williamwuofficial/ai-flow-watch">Source code &amp; raw data on GitHub</a></p>

@@ -278,6 +278,46 @@ def carry_signal(cf_all: pd.DataFrame, series: dict) -> dict:
     )
 
 
+def passive_share_signal(series: dict) -> dict:
+    """Context, not a traffic light: share of the US stock market held passively, in three tiers
+    from measured (a floor) to a broad academic estimate."""
+    cfg = CONFIG.get("passive_share", {})
+    z1 = store.read("z1")
+    ids = cfg.get("z1", {})
+    name = "How passive is the market"
+    if z1.empty or not set(ids.values()) <= set(z1["series"]):
+        return signal(11, name, "grey", "collecting", "No Fed Z.1 data yet.", "passive")
+    p = z1.pivot(index="date", columns="series", values="value").sort_index().rename(columns={v: k for k, v in ids.items()})
+    p = p.dropna(subset=["total", "etf", "mutual_funds"])
+    p["etf_pct"] = p["etf"] / p["total"] * 100
+    p["funds_pct"] = (p["etf"] + p["mutual_funds"]) / p["total"] * 100
+    series["passive"] = columns(p, ["etf_pct", "funds_pct"])
+
+    last, q = p.iloc[-1], p.index[-1]
+    qtr = f"Q{(q.month - 1) // 3 + 1} {q.year}"
+    ici, cs = cfg["ici_index_share"], cfg["chinco_sammon"]
+    high = last["etf_pct"]
+    mid = last["funds_pct"] * ici["value"] / 100
+    multiple = cs["passive"] / cs["index_funds"]
+    low = mid * multiple
+    yr = p["etf_pct"].iloc[-5] if len(p) > 4 else math.nan
+    yr_txt = f", {high - yr:+.1f} pts in a year" if not math.isnan(yr) else ""
+    out = signal(
+        11, name, "info", f"{high:.0f}% to {low:.0f}%",
+        f"Share of US stocks held by passive investors, {qtr} (Fed Z.1, quarterly). Context only, not part of the reversal count.",
+        "passive",
+    )
+    out["tiers"] = [
+        {"confidence": "High", "label": "ETFs alone (a floor)", "value": round(high, 1),
+         "note": f"Measured: ETF stock holdings ÷ market value{yr_txt}. Includes a small active-ETF slice."},
+        {"confidence": "Medium", "label": "All index funds", "value": round(mid, 1),
+         "note": f"ETF + mutual fund stock holdings ({last['funds_pct']:.0f}% of the market) × ICI index share {ici['value']:.1f}% ({ici['as_of']})."},
+        {"confidence": "Low", "label": "All passive, incl. non-fund indexers", "value": round(low, 1),
+         "note": f"Index funds × {multiple:.1f}, from Chinco & Sammon's {cs['year']} estimate ({cs['passive']:.1f}% vs {cs['index_funds']:.0f}%): adds pensions, SMAs and benchmark-hugging mandates."},
+    ]
+    return out
+
+
 # ---------- main ----------
 
 def build() -> dict:
@@ -440,6 +480,9 @@ def build() -> dict:
     # 10 yen carry: crowding in yen shorts (fuel) and the speed of any yen rally (the unwind)
     signals.append(carry_signal(cf_all, series))
 
+    # 11 context: how passive the market already is (not counted in the summary)
+    signals.append(passive_share_signal(series))
+
     # context: macro
     fr = store.read("fred").pivot(index="date", columns="series", values="value").sort_index()
     series["macro"] = columns(fr, list(fr.columns))
@@ -449,7 +492,7 @@ def build() -> dict:
     states = [s["state"] for s in signals]
     return {
         "generated": datetime.now(timezone.utc).isoformat(timespec="minutes"),
-        "summary": {k: states.count(k) for k in ("red", "amber", "green", "grey")},
+        "summary": {k: states.count(k) for k in ("red", "amber", "green", "grey", "info")},
         "signals": signals,
         "coverage": coverage,
         "status": {k: {"ok": v.get("ok"), "last_success": v.get("last_success"), "error": v.get("error")} for k, v in status.items()},

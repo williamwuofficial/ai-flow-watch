@@ -41,3 +41,17 @@ cftc:
 
 # DGS2 is paired with Japan's 2-year JGB yield (MOF) for the US–Japan rate gap.
 fred: [DGS10, DGS2, BAMLH0A0HYM2, DTWEXBGS]
+
+# Signal 11 (context, not a traffic light): how much of the US stock market is passive, in three
+# confidence tiers. Fed Z.1 levels are quarterly, $ millions, at market value (via FRED).
+passive_share:
+  z1:
+    total: BOGZ1LM893064105Q   # all sectors; corporate equities; liability (market value)
+    etf: BOGZ1LM563064100Q     # exchange-traded funds; corporate equities; asset
+    mutual_funds: BOGZ1LM653064100Q  # mutual funds; corporate equities; asset
+  # Index share of US domestic-equity mutual fund + ETF assets. ICI blocks scripted requests, so
+  # update this by hand from the monthly "Active and Index Investing" release.
+  ici_index_share: {value: 64.8, as_of: "Aug 2026", url: "https://www.ici.org/research/stats/combined_active_index_0826"}
+  # Chinco & Sammon (Management Science, 2025): passive ownership incl. non-fund indexers was at
+  # least 37.8% in 2020 vs ~15% held by index funds, i.e. ~2.5x. Used to scale the broad tier.
+  chinco_sammon: {passive: 37.8, index_funds: 15.0, year: 2020, url: "https://ideas.repec.org/a/inm/ormnsc/v71y2025i6p4582-4598.html"}

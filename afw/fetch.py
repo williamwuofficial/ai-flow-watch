@@ -78,6 +78,9 @@ def fetch_fred(status: dict) -> None:
     # Fresher than FRED for the yen-carry signal; stored alongside FRED series as "macro".
     _run(status, "ecb:USDJPY", lambda: store.upsert("fred", market.ecb_usdjpy(), ["date", "series"]))
     _run(status, "mof:JGB2Y", lambda: store.upsert("fred", market.mof_jgb2y(), ["date", "series"]))
+    # Fed Z.1 equity holdings (quarterly) for the passive-share context signal; kept out of macro.
+    for s in CONFIG.get("passive_share", {}).get("z1", {}).values():
+        _run(status, f"fred:{s}", lambda s=s: store.upsert("z1", market.fred(s), ["date", "series"]))
 
 
 def fetch_asia_indices(status: dict) -> None:

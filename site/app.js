@@ -5,6 +5,7 @@
     amber: { label: "Weakening", icon: "◆" },
     green: { label: "No reversal", icon: "▲" },
     grey: { label: "Collecting", icon: "○" },
+    info: { label: "Context", icon: "ℹ" },
   };
   // Signal 6 measures fragility, not a trend, so it gets its own wording.
   const LABEL_OVERRIDES = { 6: { green: "Normal", amber: "Elevated" } };
@@ -108,10 +109,17 @@
     el.append(plot);
   }
 
+  // confidence-tiered estimates (signal 11)
+  const tiers = (ts) =>
+    `<dl class="tiers">${ts
+      .map((t) => `<div class="tier conf-${t.confidence.toLowerCase()}"><dt><span class="conf">${t.confidence} confidence</span> ${t.label}</dt>
+        <dd><strong>${t.value.toFixed(1)}%</strong> <span>${t.note}</span></dd></div>`)
+      .join("")}</dl>`;
+
   function signalCards() {
     const s = DATA.summary;
     document.getElementById("summary").innerHTML =
-      `<strong>${s.red} of ${DATA.signals.length}</strong> reversing, ${s.amber} weakening, ${s.green} show no reversal` +
+      `<strong>${s.red} of ${DATA.signals.filter((g) => g.state !== "info").length}</strong> reversing, ${s.amber} weakening, ${s.green} show no reversal` +
       (s.grey ? `, ${s.grey} still collecting data.` : ".");
     document.getElementById("cards").innerHTML = DATA.signals
       .map((g) => {
@@ -120,7 +128,7 @@
           <div class="top"><span class="name">${g.id}. ${g.name}</span>
           <span class="badge ${g.state}" aria-label="status ${st.label}"><span aria-hidden="true">${st.icon}</span>${st.label}</span></div>
           <div class="value">${g.value}</div>
-          <div class="detail">${g.detail}</div></a>`;
+          <div class="detail">${g.detail}</div>${g.tiers ? tiers(g.tiers) : ""}</a>`;
       })
       .join("");
   }
@@ -222,6 +230,11 @@
     lineChart(q("carry_gap"), rows(S.carry, ["gap"]), [{ key: "gap", label: "US − Japan 2-year yield", color: c3 }], {
       title: "US − Japan 2-year yield gap (pts)", height: 180, fmt: (v) => v.toFixed(2),
     });
+
+    lineChart(q("passive"), rows(S.passive, ["etf_pct", "funds_pct"]), [
+      { key: "etf_pct", label: "ETFs (measured floor)", color: c1 },
+      { key: "funds_pct", label: "All ETFs + mutual funds, active included (ceiling for funds)", color: c2 },
+    ], { title: "Share of US stock market value held (%), quarterly", fmt: (v) => `${v.toFixed(1)}%`, tickFmt: pctTick, zeroDomain: true });
 
     asia("twse", { foreign: "Foreign", trusts: "Investment trusts", dealers: "Dealers", other: "Retail & others (residual)" }, "bn TWD", 0, "TAIEX");
     asia("kospi", { foreign: "Foreign", individuals: "Individuals", institutions: "Institutions", other: "Other corporations (residual)" }, "tn KRW", 1, "KOSPI");
