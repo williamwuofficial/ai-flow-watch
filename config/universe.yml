@@ -1,0 +1,40 @@
+# Every fund tracked for flows. `source` picks the fetcher; `group` drives the signals.
+# Snapshot sources (direxion, ishares, nasdaq) only start building history from first run.
+# Vanguard (VOO, VTI, VGT) is not tracked daily: no public daily shares-outstanding source
+# (Nasdaq's market-cap field is wrong for them and AUM is a monthly figure). See PLAN.md.
+funds:
+  # --- Broad passive (S&P 500 / Nasdaq-100 / total market) ---
+  - {ticker: SPY,  source: ssga,      group: broad}
+  - {ticker: SPYM, source: ssga,      group: broad}
+  - {ticker: IVV,  source: ishares,   group: broad, path: 239726/ishares-core-sp-500-etf}
+  - {ticker: QQQ,  source: nasdaq,    group: broad}
+  - {ticker: QQQM, source: nasdaq,    group: broad}
+  # --- AI theme: tech / semis / software ---
+  - {ticker: XLK,  source: ssga,      group: ai_theme}
+  - {ticker: SMH,  source: nasdaq,    group: ai_theme}
+  - {ticker: SOXX, source: ishares,   group: ai_theme, path: 239705/ishares-phlx-semiconductor-etf}
+  - {ticker: IGV,  source: ishares,   group: ai_theme, path: 239771/ishares-expanded-tech-software-sector-etf}
+  # --- Leveraged long (retail risk appetite) ---
+  - {ticker: TQQQ, source: proshares, group: leveraged}
+  - {ticker: QLD,  source: proshares, group: leveraged}
+  - {ticker: USD,  source: proshares, group: leveraged}
+  - {ticker: ROM,  source: proshares, group: leveraged}
+  - {ticker: SOXL, source: direxion,  group: leveraged}
+  - {ticker: TECL, source: direxion,  group: leveraged}
+  # --- International AI supply chain (US-listed) ---
+  - {ticker: EWT,  source: ishares,   group: intl, path: 239686/ishares-msci-taiwan-etf}
+  - {ticker: EWY,  source: ishares,   group: intl, path: 239681/ishares-msci-south-korea-etf}
+  - {ticker: EWJ,  source: ishares,   group: intl, path: 239665/ishares-msci-japan-etf}
+
+# Daily closes from Cboe (indices prefixed with underscore, e.g. _SPX).
+prices: [SPY, RSP, QQQ, QQEW, SMH, NVDA, MSFT, AVGO, AMD, TSM, GOOGL, AMZN, META, EWT, EWY]
+
+# Equal-weighted AI basket compared against RSP.
+ai_basket: [NVDA, MSFT, AVGO, AMD, TSM, GOOGL, AMZN, META]
+
+cftc:
+  # Traders in Financial Futures (futures-only) contract codes
+  - {code: "13874A", name: "E-mini S&P 500"}
+  - {code: "209742", name: "E-mini Nasdaq-100"}
+
+fred: [DGS10, BAMLH0A0HYM2, DTWEXBGS]

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Flow Watch</title>
+<meta name="description" content="Are passive fund flows into the AI trade reversing? Daily open-data dashboard of ETF creations/redemptions, concentration, positioning and foreign flows.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="wrap">
+  <h1>AI Flow Watch</h1>
+  <p class="lede">Are passive flows into the AI trade reversing? Nine signals from public data, refreshed once a day.
+    Inspired by Michael Green's work on passive investing and Gabaix &amp; Koijen's <em>inelastic markets</em>.</p>
+  <p class="meta" id="meta">Loading…</p>
+</header>
+
+<main class="wrap">
+  <section aria-labelledby="sig-h">
+    <h2 id="sig-h" class="visually-hidden">Signals</h2>
+    <p class="summary" id="summary"></p>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <div class="toolbar" role="group" aria-label="Time range">
+    <span class="toolbar-label">Range</span>
+    <button data-range="182">6M</button>
+    <button data-range="365" aria-pressed="true">1Y</button>
+    <button data-range="1095">3Y</button>
+    <button data-range="0">Since 2019</button>
+  </div>
+
+  <section class="panel" id="flows_broad">
+    <h2>1 · Broad passive flows</h2>
+    <p class="sub">Rolling 20-day net creations/redemptions as % of fund assets. SPY &amp; SPYM have full history; IVV, QQQ, QQQM are added as their snapshots accumulate.</p>
+    <div class="chart" data-chart="flows_broad"></div>
+  </section>
+
+  <section class="panel" id="flows_ai_theme">
+    <h2>2 · AI-theme flows</h2>
+    <p class="sub">Tech, semiconductor and software ETFs (XLK with history; SMH, SOXX, IGV accumulating).</p>
+    <div class="chart" data-chart="flows_ai_theme"></div>
+  </section>
+
+  <section class="panel" id="flows_leveraged">
+    <h2>3 · Leveraged long tech &amp; semis</h2>
+    <p class="sub">TQQQ, QLD, USD, ROM (+ SOXL, TECL accumulating). Inflows during a drawdown are retail buying the dip; outflows are capitulation.</p>
+    <div class="chart" data-chart="flows_leveraged"></div>
+  </section>
+
+  <section class="panel" id="cap_vs_equal">
+    <h2>4 · Cap-weight vs equal-weight</h2>
+    <p class="sub">Price ratio of cap-weighted to equal-weighted funds. Passive inflows push this up; a break below its averages means the biggest stocks are losing to the average stock.</p>
+    <div class="chart" data-chart="spy_rsp"></div>
+    <div class="chart" data-chart="qqq_qqew"></div>
+  </section>
+
+  <section class="panel" id="ai_basket">
+    <h2>5 · AI basket vs equal-weight market</h2>
+    <p class="sub">Equal-weighted NVDA, MSFT, AVGO, AMD, TSM, GOOGL, AMZN, META divided by RSP, rebased to 1 on 2 Jan 2019.</p>
+    <div class="chart" data-chart="ai_basket"></div>
+  </section>
+
+  <section class="panel" id="impact">
+    <h2>6 · Flow price-impact</h2>
+    <p class="sub">26-week rolling slope of weekly SPY returns on weekly broad passive flow (% of AUM). A rising slope means each dollar of flow moves prices more — the inelastic-markets mechanism. Correlation only: flows also chase returns.</p>
+    <div class="chart" data-chart="impact"></div>
+  </section>
+
+  <section class="panel" id="cftc">
+    <h2>7 · Asset-manager futures positioning</h2>
+    <p class="sub">CFTC Traders in Financial Futures, average of E-mini S&amp;P 500 and Nasdaq-100: net long as % of open interest. Asset managers (pensions, insurers, index funds) are slow, real money; hedge funds are fast money, often short against them. Weekly (Tuesday positions, published Friday). Dips around March/June/September/December expiries are contract rolls, not selling.</p>
+    <div class="chart" data-chart="cftc"></div>
+  </section>
+
+  <section class="panel" id="twse">
+    <h2>8 · Taiwan foreign investor flows</h2>
+    <p class="sub">Rolling 20-day net buying by foreign investors on the Taiwan Stock Exchange, billions of TWD. Taiwan is the AI hardware supply chain (TSMC).</p>
+    <div class="chart" data-chart="twse"></div>
+  </section>
+
+  <section class="panel" id="kospi">
+    <h2>9 · Korea foreign investor flows</h2>
+    <p class="sub">Rolling 20-day net buying by foreign investors on KOSPI, trillions of KRW. Korea is the AI memory supply chain (Samsung Electronics, SK Hynix).</p>
+    <div class="chart" data-chart="kospi"></div>
+  </section>
+
+  <section class="panel" id="context">
+    <h2>Context</h2>
+    <p class="sub">Price indexed to 100 at the start of the selected range.</p>
+    <div class="chart" data-chart="index"></div>
+    <div class="grid3">
+      <div><h3>High-yield spread (%)</h3><div class="chart small" data-chart="BAMLH0A0HYM2"></div></div>
+      <div><h3>10-year Treasury (%)</h3><div class="chart small" data-chart="DGS10"></div></div>
+      <div><h3>Broad US dollar index</h3><div class="chart small" data-chart="DTWEXBGS"></div></div>
+    </div>
+  </section>
+
+  <section class="panel" id="data">
+    <h2>Data &amp; coverage</h2>
+    <p class="sub">Flow = change in shares outstanding × NAV. "Snapshot" funds have no public history, so their record starts on the first day this site collected them. Estimated = shares implied from reported fund market cap.</p>
+    <div class="table-wrap"><table id="coverage"></table></div>
+    <h3>Source health</h3>
+    <div class="table-wrap"><table id="status"></table></div>
+  </section>
+
+  <section class="panel prose" id="method">
+    <h2>Method &amp; caveats</h2>
+    <ul>
+      <li><strong>Traffic lights.</strong> Flows: green if the 20-day sum is positive, amber if negative but the 60-day sum is still positive, red if both are negative. Ratios: green above both the 50- and 200-day averages, amber below one, red below both. Positioning: weekly readings during quarterly contract rolls are skipped; it counts as weak when at least 1 standard deviation below its 52-week median and falling when down at least 3 points over 4 weeks: one of those is "weakening", both is "reversing". Historically that fired "reversing" in about 14% of weeks, clustered in 2016, 2018, March 2020, 2022 and early 2025.</li>
+      <li><strong>Creations ≠ end-investor demand day to day.</strong> Market makers create and redeem for inventory, and "heartbeat" trades around index rebalances create and redeem billions within days. Creations over 2% of assets reversed by at least 80% within five days are netted out; share splits are ignored.</li>
+      <li><strong>Much passive money is invisible.</strong> 401(k) target-date funds and collective trusts don't report daily. Vanguard (VOO, VTI, VGT) publishes no daily shares outstanding, so the largest S&amp;P 500 fund is missing from daily flows.</li>
+      <li><strong>Reporting lag.</strong> Shares outstanding usually reflect the previous day's orders; the impact regression shifts flows by one day.</li>
+      <li><strong>Sources.</strong> State Street, ProShares, Direxion, iShares, Nasdaq, Cboe (delayed quotes), CFTC, FRED, TWSE, Naver Finance (KOSPI investor flows). Several are unofficial endpoints and may break; source health above shows the last successful fetch.</li>
+      <li>Not investment advice.</li>
+    </ul>
+    <p><a href="https://github.com/williamwuofficial/ai-flow-watch">Source code &amp; raw data on GitHub</a></p>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6.16/dist/plot.umd.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

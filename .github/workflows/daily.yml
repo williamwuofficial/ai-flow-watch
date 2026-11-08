@@ -1,0 +1,72 @@
+name: daily
+
+on:
+  schedule:
+    - cron: "0 12 * * 2-6" # 12:00 UTC Tue–Sat: issuers have published the prior US session
+  push: # redeploy when code or the site changes
+    branches: [main]
+    paths: ["afw/**", "site/**", "config/**", "requirements.txt", ".github/workflows/**"]
+  workflow_dispatch:
+    inputs:
+      backfill_max:
+        description: "Max Taiwan/Korea days to fetch per source. Raise (e.g. 800) for a backfill."
+        default: "60"
+
+permissions:
+  contents: write # push the data branch
+  pages: write
+  id-token: write
+
+concurrency:
+  group: daily
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check out data branch into ./data
+        run: |
+          if git ls-remote --exit-code --heads origin data >/dev/null; then
+            git fetch --depth=1 origin data
+            git worktree add data FETCH_HEAD
+          else
+            git worktree add --orphan -b data data
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Fetch
+        run: python -m afw.fetch --backfill-max "${{ inputs.backfill_max || '60' }}"
+
+      - name: Derive
+        run: python -m afw.derive
+
+      - name: Commit data
+        working-directory: data
+        run: |
+          git add -A
+          if git diff --cached --quiet; then echo "no data changes"; exit 0; fi
+          git -c user.name="github-actions[bot]" -c user.email="41898282+github-actions[bot]@users.noreply.github.com" \
+            commit -q -m "data: $(date -u +%Y-%m-%d)"
+          git push origin HEAD:data
+
+      - run: python -m afw.build_site
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deploy
+        uses: actions/deploy-pages@v4

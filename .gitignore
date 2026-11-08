@@ -1,0 +1,5 @@
+.venv/
+__pycache__/
+_site/
+# data lives on the `data` branch (checked out into ./data by the workflow)
+data/
