@@ -1,8 +1,10 @@
 # AI Flow Watch
 
+**Live dashboard: https://williamwuofficial.github.io/ai-flow-watch/**
+
 Static dashboard tracking whether **passive fund flows into the AI trade are reversing**:
 ETF creations/redemptions, cap- vs equal-weight, AI-basket relative strength, asset-manager
-futures positioning and Taiwan / Korea foreign flows, plus yen-carry stress, condensed into ten traffic-light signals.
+futures positioning and Taiwan / Korea foreign flows, plus yen-carry stress, condensed into ten traffic-light signals, plus a gauge of how passive the US market already is.
 Refreshed once a day by GitHub Actions, served by GitHub Pages. Free public data only.
 
 See [PLAN.md](PLAN.md) for the thesis, signal rules, data sources and roadmap.
