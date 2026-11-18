@@ -1,206 +1,206 @@
 {
  "cftc:097741": {
   "error": null,
-  "last_attempt": "2026-11-17T20:34:04+00:00",
-  "last_success": "2026-11-17T20:34:04+00:00",
+  "last_attempt": "2026-11-18T20:04:34+00:00",
+  "last_success": "2026-11-18T20:04:34+00:00",
   "ok": true,
   "rows": 619
  },
  "cftc:13874A": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:55+00:00",
-  "last_success": "2026-11-17T20:33:55+00:00",
+  "last_attempt": "2026-11-18T20:04:27+00:00",
+  "last_success": "2026-11-18T20:04:27+00:00",
   "ok": true,
   "rows": 619
  },
  "cftc:209742": {
   "error": null,
-  "last_attempt": "2026-11-17T20:34:03+00:00",
-  "last_success": "2026-11-17T20:34:03+00:00",
+  "last_attempt": "2026-11-18T20:04:33+00:00",
+  "last_success": "2026-11-18T20:04:33+00:00",
   "ok": true,
   "rows": 619
  },
  "concentration:SPY": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:55+00:00",
-  "last_success": "2026-11-17T20:33:55+00:00",
+  "last_attempt": "2026-11-18T20:04:27+00:00",
+  "last_success": "2026-11-18T20:04:27+00:00",
   "ok": true,
   "rows": 1
  },
  "ecb:USDJPY": {
   "error": null,
-  "last_attempt": "2026-11-17T20:34:09+00:00",
-  "last_success": "2026-11-17T20:34:09+00:00",
+  "last_attempt": "2026-11-18T20:04:38+00:00",
+  "last_success": "2026-11-18T20:04:38+00:00",
   "ok": true,
-  "rows": 3041
+  "rows": 3042
  },
  "fred:BAMLH0A0HYM2": {
   "error": null,
-  "last_attempt": "2026-11-17T20:34:06+00:00",
-  "last_success": "2026-11-17T20:34:06+00:00",
+  "last_attempt": "2026-11-18T20:04:36+00:00",
+  "last_success": "2026-11-18T20:04:36+00:00",
   "ok": true,
-  "rows": 784
+  "rows": 785
  },
  "fred:BOGZ1LM563064100Q": {
   "error": null,
-  "last_attempt": "2026-11-17T20:34:14+00:00",
-  "last_success": "2026-11-17T20:34:14+00:00",
+  "last_attempt": "2026-11-18T20:04:44+00:00",
+  "last_success": "2026-11-18T20:04:44+00:00",
   "ok": true,
   "rows": 46
  },
  "fred:BOGZ1LM653064100Q": {
   "error": null,
-  "last_attempt": "2026-11-17T20:34:15+00:00",
-  "last_success": "2026-11-17T20:34:15+00:00",
+  "last_attempt": "2026-11-18T20:04:45+00:00",
+  "last_success": "2026-11-18T20:04:45+00:00",
   "ok": true,
   "rows": 46
  },
  "fred:BOGZ1LM893064105Q": {
   "error": null,
-  "last_attempt": "2026-11-17T20:34:13+00:00",
-  "last_success": "2026-11-17T20:34:13+00:00",
+  "last_attempt": "2026-11-18T20:04:44+00:00",
+  "last_success": "2026-11-18T20:04:44+00:00",
   "ok": true,
   "rows": 46
  },
  "fred:DGS10": {
   "error": null,
-  "last_attempt": "2026-11-17T20:34:05+00:00",
-  "last_success": "2026-11-17T20:34:05+00:00",
+  "last_attempt": "2026-11-18T20:04:35+00:00",
+  "last_success": "2026-11-18T20:04:35+00:00",
   "ok": true,
-  "rows": 2968
+  "rows": 2969
  },
  "fred:DGS2": {
   "error": null,
-  "last_attempt": "2026-11-17T20:34:05+00:00",
-  "last_success": "2026-11-17T20:34:05+00:00",
+  "last_attempt": "2026-11-18T20:04:35+00:00",
+  "last_success": "2026-11-18T20:04:35+00:00",
   "ok": true,
-  "rows": 2968
+  "rows": 2969
  },
  "fred:DTWEXBGS": {
   "error": null,
-  "last_attempt": "2026-11-17T20:34:08+00:00",
-  "last_success": "2026-11-17T20:34:08+00:00",
+  "last_attempt": "2026-11-18T20:04:37+00:00",
+  "last_success": "2026-11-18T20:04:37+00:00",
   "ok": true,
   "rows": 2959
  },
  "fund:EWJ": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:54+00:00",
-  "last_success": "2026-11-17T20:33:54+00:00",
+  "last_attempt": "2026-11-18T20:04:26+00:00",
+  "last_success": "2026-11-18T20:04:26+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:EWT": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:53+00:00",
-  "last_success": "2026-11-17T20:33:53+00:00",
+  "last_attempt": "2026-11-18T20:04:24+00:00",
+  "last_success": "2026-11-18T20:04:24+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:EWY": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:53+00:00",
-  "last_success": "2026-11-17T20:33:53+00:00",
+  "last_attempt": "2026-11-18T20:04:25+00:00",
+  "last_success": "2026-11-18T20:04:25+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:IGV": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:48+00:00",
-  "last_success": "2026-11-17T20:33:48+00:00",
+  "last_attempt": "2026-11-18T20:04:19+00:00",
+  "last_success": "2026-11-18T20:04:19+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:IVV": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:40+00:00",
-  "last_success": "2026-11-17T20:33:40+00:00",
+  "last_attempt": "2026-11-18T20:04:09+00:00",
+  "last_success": "2026-11-18T20:04:09+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:QLD": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:49+00:00",
-  "last_success": "2026-11-17T20:33:49+00:00",
+  "last_attempt": "2026-11-18T20:04:21+00:00",
+  "last_success": "2026-11-18T20:04:21+00:00",
   "ok": true,
-  "rows": 5136
+  "rows": 5137
  },
  "fund:QQQ": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:41+00:00",
-  "last_success": "2026-11-17T20:33:41+00:00",
+  "last_attempt": "2026-11-18T20:04:10+00:00",
+  "last_success": "2026-11-18T20:04:10+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:QQQM": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:42+00:00",
-  "last_success": "2026-11-17T20:33:42+00:00",
+  "last_attempt": "2026-11-18T20:04:12+00:00",
+  "last_success": "2026-11-18T20:04:12+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:ROM": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:51+00:00",
-  "last_success": "2026-11-17T20:33:51+00:00",
+  "last_attempt": "2026-11-18T20:04:22+00:00",
+  "last_success": "2026-11-18T20:04:22+00:00",
   "ok": true,
-  "rows": 4983
+  "rows": 4984
  },
  "fund:SMH": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:45+00:00",
-  "last_success": "2026-11-17T20:33:45+00:00",
+  "last_attempt": "2026-11-18T20:04:16+00:00",
+  "last_success": "2026-11-18T20:04:16+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:SOXL": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:51+00:00",
-  "last_success": "2026-11-17T20:33:51+00:00",
+  "last_attempt": "2026-11-18T20:04:23+00:00",
+  "last_success": "2026-11-18T20:04:23+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:SOXX": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:48+00:00",
-  "last_success": "2026-11-17T20:33:48+00:00",
+  "last_attempt": "2026-11-18T20:04:19+00:00",
+  "last_success": "2026-11-18T20:04:19+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:SPY": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:38+00:00",
-  "last_success": "2026-11-17T20:33:38+00:00",
+  "last_attempt": "2026-11-18T20:04:07+00:00",
+  "last_success": "2026-11-18T20:04:07+00:00",
   "ok": true,
-  "rows": 5152
+  "rows": 5153
  },
  "fund:SPYM": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:39+00:00",
-  "last_success": "2026-11-17T20:33:39+00:00",
+  "last_attempt": "2026-11-18T20:04:08+00:00",
+  "last_success": "2026-11-18T20:04:08+00:00",
   "ok": true,
-  "rows": 5222
+  "rows": 5223
  },
  "fund:TECL": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:52+00:00",
-  "last_success": "2026-11-17T20:33:52+00:00",
+  "last_attempt": "2026-11-18T20:04:23+00:00",
+  "last_success": "2026-11-18T20:04:23+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:TQQQ": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:49+00:00",
-  "last_success": "2026-11-17T20:33:49+00:00",
+  "last_attempt": "2026-11-18T20:04:21+00:00",
+  "last_success": "2026-11-18T20:04:21+00:00",
   "ok": true,
-  "rows": 4219
+  "rows": 4220
  },
  "fund:USD": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:50+00:00",
-  "last_success": "2026-11-17T20:33:50+00:00",
+  "last_attempt": "2026-11-18T20:04:22+00:00",
+  "last_success": "2026-11-18T20:04:22+00:00",
   "ok": true,
-  "rows": 4983
+  "rows": 4984
  },
  "fund:VGT": {
   "error": null,
@@ -225,227 +225,227 @@
  },
  "fund:XLK": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:44+00:00",
-  "last_success": "2026-11-17T20:33:44+00:00",
+  "last_attempt": "2026-11-18T20:04:15+00:00",
+  "last_success": "2026-11-18T20:04:15+00:00",
   "ok": true,
-  "rows": 5152
+  "rows": 5153
  },
  "kospi": {
   "error": null,
-  "last_attempt": "2026-11-17T20:34:22+00:00",
-  "last_success": "2026-11-17T20:34:22+00:00",
+  "last_attempt": "2026-11-18T20:04:47+00:00",
+  "last_success": "2026-11-18T20:04:47+00:00",
   "ok": true,
-  "rows": 3
+  "rows": 1
  },
  "mof:JGB2Y": {
   "error": null,
-  "last_attempt": "2026-11-17T20:34:10+00:00",
-  "last_success": "2026-11-17T20:34:10+00:00",
+  "last_attempt": "2026-11-18T20:04:39+00:00",
+  "last_success": "2026-11-18T20:04:39+00:00",
   "ok": true,
-  "rows": 2899
+  "rows": 2900
  },
  "prices:AMD": {
   "error": null,
-  "last_attempt": "2026-11-17T20:32:21+00:00",
-  "last_success": "2026-11-17T20:32:21+00:00",
+  "last_attempt": "2026-11-18T20:02:54+00:00",
+  "last_success": "2026-11-18T20:02:54+00:00",
   "ok": true,
-  "rows": 3008
+  "rows": 3010
  },
  "prices:AMZN": {
   "error": null,
-  "last_attempt": "2026-11-17T20:32:41+00:00",
-  "last_success": "2026-11-17T20:32:41+00:00",
+  "last_attempt": "2026-11-18T20:03:11+00:00",
+  "last_success": "2026-11-18T20:03:11+00:00",
   "ok": true,
-  "rows": 3008
+  "rows": 3010
  },
  "prices:AVGO": {
   "error": null,
-  "last_attempt": "2026-11-17T20:32:16+00:00",
-  "last_success": "2026-11-17T20:32:16+00:00",
+  "last_attempt": "2026-11-18T20:02:49+00:00",
+  "last_success": "2026-11-18T20:02:49+00:00",
   "ok": true,
-  "rows": 3009
+  "rows": 3011
  },
  "prices:EWJ": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:32+00:00",
-  "last_success": "2026-11-17T20:33:32+00:00",
+  "last_attempt": "2026-11-18T20:04:00+00:00",
+  "last_success": "2026-11-18T20:04:00+00:00",
   "ok": true,
-  "rows": 3010
+  "rows": 3012
  },
  "prices:EWT": {
   "error": null,
-  "last_attempt": "2026-11-17T20:32:52+00:00",
-  "last_success": "2026-11-17T20:32:52+00:00",
+  "last_attempt": "2026-11-18T20:03:23+00:00",
+  "last_success": "2026-11-18T20:03:23+00:00",
   "ok": true,
-  "rows": 3009
+  "rows": 3011
  },
  "prices:EWY": {
   "error": null,
-  "last_attempt": "2026-11-17T20:32:56+00:00",
-  "last_success": "2026-11-17T20:32:56+00:00",
+  "last_attempt": "2026-11-18T20:03:26+00:00",
+  "last_success": "2026-11-18T20:03:26+00:00",
   "ok": true,
-  "rows": 3010
+  "rows": 3012
  },
  "prices:GOOGL": {
   "error": null,
-  "last_attempt": "2026-11-17T20:32:36+00:00",
-  "last_success": "2026-11-17T20:32:36+00:00",
+  "last_attempt": "2026-11-18T20:03:05+00:00",
+  "last_success": "2026-11-18T20:03:05+00:00",
   "ok": true,
-  "rows": 3009
+  "rows": 3011
  },
  "prices:IGV": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:12+00:00",
-  "last_success": "2026-11-17T20:33:12+00:00",
+  "last_attempt": "2026-11-18T20:03:46+00:00",
+  "last_success": "2026-11-18T20:03:46+00:00",
   "ok": true,
-  "rows": 3010
+  "rows": 3012
  },
  "prices:IVV": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:03+00:00",
-  "last_success": "2026-11-17T20:33:03+00:00",
+  "last_attempt": "2026-11-18T20:03:33+00:00",
+  "last_success": "2026-11-18T20:03:33+00:00",
   "ok": true,
-  "rows": 3009
+  "rows": 3011
  },
  "prices:KOSPI": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:36+00:00",
-  "last_success": "2026-11-17T20:33:36+00:00",
+  "last_attempt": "2026-11-18T20:04:04+00:00",
+  "last_success": "2026-11-18T20:04:04+00:00",
   "ok": true,
   "rows": 800
  },
  "prices:META": {
   "error": null,
-  "last_attempt": "2026-11-17T20:32:46+00:00",
-  "last_success": "2026-11-17T20:32:46+00:00",
+  "last_attempt": "2026-11-18T20:03:18+00:00",
+  "last_success": "2026-11-18T20:03:18+00:00",
   "ok": true,
-  "rows": 3008
+  "rows": 3010
  },
  "prices:MSFT": {
   "error": null,
-  "last_attempt": "2026-11-17T20:32:12+00:00",
-  "last_success": "2026-11-17T20:32:12+00:00",
+  "last_attempt": "2026-11-18T20:02:44+00:00",
+  "last_success": "2026-11-18T20:02:44+00:00",
   "ok": true,
-  "rows": 3008
+  "rows": 3010
  },
  "prices:NVDA": {
   "error": null,
-  "last_attempt": "2026-11-17T20:32:06+00:00",
-  "last_success": "2026-11-17T20:32:06+00:00",
+  "last_attempt": "2026-11-18T20:02:38+00:00",
+  "last_success": "2026-11-18T20:02:38+00:00",
   "ok": true,
-  "rows": 3008
+  "rows": 3010
  },
  "prices:QLD": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:19+00:00",
-  "last_success": "2026-11-17T20:33:19+00:00",
+  "last_attempt": "2026-11-18T20:03:50+00:00",
+  "last_success": "2026-11-18T20:03:50+00:00",
   "ok": true,
-  "rows": 3009
+  "rows": 3011
  },
  "prices:QQEW": {
   "error": null,
-  "last_attempt": "2026-11-17T20:31:59+00:00",
-  "last_success": "2026-11-17T20:31:59+00:00",
+  "last_attempt": "2026-11-18T20:02:32+00:00",
+  "last_success": "2026-11-18T20:02:32+00:00",
   "ok": true,
-  "rows": 3008
+  "rows": 3010
  },
  "prices:QQQ": {
   "error": null,
-  "last_attempt": "2026-11-17T20:31:56+00:00",
-  "last_success": "2026-11-17T20:31:56+00:00",
+  "last_attempt": "2026-11-18T20:02:30+00:00",
+  "last_success": "2026-11-18T20:02:30+00:00",
   "ok": true,
-  "rows": 3008
+  "rows": 3010
  },
  "prices:QQQM": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:05+00:00",
-  "last_success": "2026-11-17T20:33:05+00:00",
+  "last_attempt": "2026-11-18T20:03:37+00:00",
+  "last_success": "2026-11-18T20:03:37+00:00",
   "ok": true,
-  "rows": 1553
+  "rows": 1555
  },
  "prices:ROM": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:23+00:00",
-  "last_success": "2026-11-17T20:33:23+00:00",
+  "last_attempt": "2026-11-18T20:03:54+00:00",
+  "last_success": "2026-11-18T20:03:54+00:00",
   "ok": true,
-  "rows": 3009
+  "rows": 3011
  },
  "prices:RSP": {
   "error": null,
-  "last_attempt": "2026-11-17T20:31:53+00:00",
-  "last_success": "2026-11-17T20:31:53+00:00",
+  "last_attempt": "2026-11-18T20:02:28+00:00",
+  "last_success": "2026-11-18T20:02:28+00:00",
   "ok": true,
-  "rows": 3010
+  "rows": 3012
  },
  "prices:SMH": {
   "error": null,
-  "last_attempt": "2026-11-17T20:32:03+00:00",
-  "last_success": "2026-11-17T20:32:03+00:00",
+  "last_attempt": "2026-11-18T20:02:35+00:00",
+  "last_success": "2026-11-18T20:02:35+00:00",
   "ok": true,
-  "rows": 3009
+  "rows": 3011
  },
  "prices:SOXL": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:25+00:00",
-  "last_success": "2026-11-17T20:33:25+00:00",
+  "last_attempt": "2026-11-18T20:03:57+00:00",
+  "last_success": "2026-11-18T20:03:57+00:00",
   "ok": true,
-  "rows": 3010
+  "rows": 3012
  },
  "prices:SOXX": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:10+00:00",
-  "last_success": "2026-11-17T20:33:10+00:00",
+  "last_attempt": "2026-11-18T20:03:44+00:00",
+  "last_success": "2026-11-18T20:03:44+00:00",
   "ok": true,
-  "rows": 3009
+  "rows": 3011
  },
  "prices:SPY": {
   "error": null,
-  "last_attempt": "2026-11-17T20:31:49+00:00",
-  "last_success": "2026-11-17T20:31:49+00:00",
+  "last_attempt": "2026-11-18T20:02:26+00:00",
+  "last_success": "2026-11-18T20:02:26+00:00",
   "ok": true,
-  "rows": 3010
+  "rows": 3012
  },
  "prices:SPYM": {
   "error": null,
-  "last_attempt": "2026-11-17T20:32:59+00:00",
-  "last_success": "2026-11-17T20:32:59+00:00",
+  "last_attempt": "2026-11-18T20:03:29+00:00",
+  "last_success": "2026-11-18T20:03:29+00:00",
   "ok": true,
-  "rows": 2307
+  "rows": 2309
  },
  "prices:TAIEX": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:37+00:00",
-  "last_success": "2026-11-17T20:33:37+00:00",
+  "last_attempt": "2026-11-18T20:04:05+00:00",
+  "last_success": "2026-11-18T20:04:05+00:00",
   "ok": true,
-  "rows": 12
+  "rows": 13
  },
  "prices:TECL": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:28+00:00",
-  "last_success": "2026-11-17T20:33:28+00:00",
+  "last_attempt": "2026-11-18T20:03:58+00:00",
+  "last_success": "2026-11-18T20:03:58+00:00",
   "ok": true,
-  "rows": 3009
+  "rows": 3011
  },
  "prices:TQQQ": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:16+00:00",
-  "last_success": "2026-11-17T20:33:16+00:00",
-  "ok": true,
-  "rows": 3008
- },
- "prices:TSM": {
-  "error": null,
-  "last_attempt": "2026-11-17T20:32:28+00:00",
-  "last_success": "2026-11-17T20:32:28+00:00",
+  "last_attempt": "2026-11-18T20:03:48+00:00",
+  "last_success": "2026-11-18T20:03:48+00:00",
   "ok": true,
   "rows": 3010
  },
+ "prices:TSM": {
+  "error": null,
+  "last_attempt": "2026-11-18T20:03:01+00:00",
+  "last_success": "2026-11-18T20:03:01+00:00",
+  "ok": true,
+  "rows": 3012
+ },
  "prices:USD": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:21+00:00",
-  "last_success": "2026-11-17T20:33:21+00:00",
+  "last_attempt": "2026-11-18T20:03:52+00:00",
+  "last_success": "2026-11-18T20:03:52+00:00",
   "ok": true,
-  "rows": 3009
+  "rows": 3011
  },
  "prices:VGT": {
   "error": null,
@@ -470,16 +470,16 @@
  },
  "prices:XLK": {
   "error": null,
-  "last_attempt": "2026-11-17T20:33:08+00:00",
-  "last_success": "2026-11-17T20:33:08+00:00",
+  "last_attempt": "2026-11-18T20:03:40+00:00",
+  "last_success": "2026-11-18T20:03:40+00:00",
   "ok": true,
-  "rows": 3009
+  "rows": 3011
  },
  "twse": {
   "error": null,
-  "last_attempt": "2026-11-17T20:34:16+00:00",
-  "last_success": "2026-11-17T20:34:16+00:00",
+  "last_attempt": "2026-11-18T20:04:46+00:00",
+  "last_success": "2026-11-18T20:04:46+00:00",
   "ok": true,
-  "rows": 3
+  "rows": 1
  }
 }
