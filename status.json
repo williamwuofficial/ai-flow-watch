@@ -1,206 +1,206 @@
 {
  "cftc:097741": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:55+00:00",
-  "last_success": "2026-11-19T20:02:55+00:00",
+  "last_attempt": "2026-11-20T19:40:32+00:00",
+  "last_success": "2026-11-20T19:40:32+00:00",
   "ok": true,
   "rows": 619
  },
  "cftc:13874A": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:50+00:00",
-  "last_success": "2026-11-19T20:02:50+00:00",
+  "last_attempt": "2026-11-20T19:40:27+00:00",
+  "last_success": "2026-11-20T19:40:27+00:00",
   "ok": true,
   "rows": 619
  },
  "cftc:209742": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:55+00:00",
-  "last_success": "2026-11-19T20:02:55+00:00",
+  "last_attempt": "2026-11-20T19:40:31+00:00",
+  "last_success": "2026-11-20T19:40:31+00:00",
   "ok": true,
   "rows": 619
  },
  "concentration:SPY": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:50+00:00",
-  "last_success": "2026-11-19T20:02:50+00:00",
+  "last_attempt": "2026-11-20T19:40:27+00:00",
+  "last_success": "2026-11-20T19:40:27+00:00",
   "ok": true,
   "rows": 1
  },
  "ecb:USDJPY": {
   "error": null,
-  "last_attempt": "2026-11-19T20:03:00+00:00",
-  "last_success": "2026-11-19T20:03:00+00:00",
+  "last_attempt": "2026-11-20T19:40:35+00:00",
+  "last_success": "2026-11-20T19:40:35+00:00",
   "ok": true,
-  "rows": 3043
+  "rows": 3044
  },
  "fred:BAMLH0A0HYM2": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:58+00:00",
-  "last_success": "2026-11-19T20:02:58+00:00",
+  "last_attempt": "2026-11-20T19:40:34+00:00",
+  "last_success": "2026-11-20T19:40:34+00:00",
   "ok": true,
   "rows": 786
  },
  "fred:BOGZ1LM563064100Q": {
   "error": null,
-  "last_attempt": "2026-11-19T20:03:15+00:00",
-  "last_success": "2026-11-19T20:03:15+00:00",
+  "last_attempt": "2026-11-20T19:40:42+00:00",
+  "last_success": "2026-11-20T19:40:42+00:00",
   "ok": true,
   "rows": 46
  },
  "fred:BOGZ1LM653064100Q": {
   "error": null,
-  "last_attempt": "2026-11-19T20:03:16+00:00",
-  "last_success": "2026-11-19T20:03:16+00:00",
+  "last_attempt": "2026-11-20T19:40:44+00:00",
+  "last_success": "2026-11-20T19:40:44+00:00",
   "ok": true,
   "rows": 46
  },
  "fred:BOGZ1LM893064105Q": {
   "error": null,
-  "last_attempt": "2026-11-19T20:03:14+00:00",
-  "last_success": "2026-11-19T20:03:14+00:00",
+  "last_attempt": "2026-11-20T19:40:41+00:00",
+  "last_success": "2026-11-20T19:40:41+00:00",
   "ok": true,
   "rows": 46
  },
  "fred:DGS10": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:56+00:00",
-  "last_success": "2026-11-19T20:02:56+00:00",
+  "last_attempt": "2026-11-20T19:40:33+00:00",
+  "last_success": "2026-11-20T19:40:33+00:00",
   "ok": true,
-  "rows": 2970
+  "rows": 2971
  },
  "fred:DGS2": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:57+00:00",
-  "last_success": "2026-11-19T20:02:57+00:00",
+  "last_attempt": "2026-11-20T19:40:34+00:00",
+  "last_success": "2026-11-20T19:40:34+00:00",
   "ok": true,
-  "rows": 2970
+  "rows": 2971
  },
  "fred:DTWEXBGS": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:59+00:00",
-  "last_success": "2026-11-19T20:02:59+00:00",
+  "last_attempt": "2026-11-20T19:40:35+00:00",
+  "last_success": "2026-11-20T19:40:35+00:00",
   "ok": true,
   "rows": 2959
  },
  "fund:EWJ": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:49+00:00",
-  "last_success": "2026-11-19T20:02:49+00:00",
+  "last_attempt": "2026-11-20T19:40:26+00:00",
+  "last_success": "2026-11-20T19:40:26+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:EWT": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:47+00:00",
-  "last_success": "2026-11-19T20:02:47+00:00",
+  "last_attempt": "2026-11-20T19:40:24+00:00",
+  "last_success": "2026-11-20T19:40:24+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:EWY": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:48+00:00",
-  "last_success": "2026-11-19T20:02:48+00:00",
+  "last_attempt": "2026-11-20T19:40:25+00:00",
+  "last_success": "2026-11-20T19:40:25+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:IGV": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:44+00:00",
-  "last_success": "2026-11-19T20:02:44+00:00",
+  "last_attempt": "2026-11-20T19:40:21+00:00",
+  "last_success": "2026-11-20T19:40:21+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:IVV": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:34+00:00",
-  "last_success": "2026-11-19T20:02:34+00:00",
+  "last_attempt": "2026-11-20T19:40:13+00:00",
+  "last_success": "2026-11-20T19:40:13+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:QLD": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:45+00:00",
-  "last_success": "2026-11-19T20:02:45+00:00",
+  "last_attempt": "2026-11-20T19:40:22+00:00",
+  "last_success": "2026-11-20T19:40:22+00:00",
   "ok": true,
-  "rows": 5138
+  "rows": 5139
  },
  "fund:QQQ": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:02:35+00:00",
+  "error": "ValueError: QQQ: previous close 645.04 not found in recent prices",
+  "last_attempt": "2026-11-20T19:40:14+00:00",
   "last_success": "2026-11-19T20:02:35+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 1
  },
  "fund:QQQM": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:02:39+00:00",
+  "error": "ValueError: QQQM: previous close 265.64 not found in recent prices",
+  "last_attempt": "2026-11-20T19:40:15+00:00",
   "last_success": "2026-11-19T20:02:39+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 1
  },
  "fund:ROM": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:46+00:00",
-  "last_success": "2026-11-19T20:02:46+00:00",
+  "last_attempt": "2026-11-20T19:40:23+00:00",
+  "last_success": "2026-11-20T19:40:23+00:00",
   "ok": true,
-  "rows": 4985
+  "rows": 4986
  },
  "fund:SMH": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:02:41+00:00",
+  "error": "ValueError: SMH: market cap 5.18e+10 disagrees with AUM 5.88e+10; unusable",
+  "last_attempt": "2026-11-20T19:40:18+00:00",
   "last_success": "2026-11-19T20:02:41+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 1
  },
  "fund:SOXL": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:47+00:00",
-  "last_success": "2026-11-19T20:02:47+00:00",
+  "last_attempt": "2026-11-20T19:40:23+00:00",
+  "last_success": "2026-11-20T19:40:23+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:SOXX": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:43+00:00",
-  "last_success": "2026-11-19T20:02:43+00:00",
+  "last_attempt": "2026-11-20T19:40:20+00:00",
+  "last_success": "2026-11-20T19:40:20+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:SPY": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:32+00:00",
-  "last_success": "2026-11-19T20:02:32+00:00",
+  "last_attempt": "2026-11-20T19:40:11+00:00",
+  "last_success": "2026-11-20T19:40:11+00:00",
   "ok": true,
-  "rows": 5154
+  "rows": 5155
  },
  "fund:SPYM": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:33+00:00",
-  "last_success": "2026-11-19T20:02:33+00:00",
+  "last_attempt": "2026-11-20T19:40:12+00:00",
+  "last_success": "2026-11-20T19:40:12+00:00",
   "ok": true,
-  "rows": 5224
+  "rows": 5225
  },
  "fund:TECL": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:47+00:00",
-  "last_success": "2026-11-19T20:02:47+00:00",
+  "last_attempt": "2026-11-20T19:40:24+00:00",
+  "last_success": "2026-11-20T19:40:24+00:00",
   "ok": true,
   "rows": 1
  },
  "fund:TQQQ": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:45+00:00",
-  "last_success": "2026-11-19T20:02:45+00:00",
+  "last_attempt": "2026-11-20T19:40:22+00:00",
+  "last_success": "2026-11-20T19:40:22+00:00",
   "ok": true,
-  "rows": 4221
+  "rows": 4222
  },
  "fund:USD": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:46+00:00",
-  "last_success": "2026-11-19T20:02:46+00:00",
+  "last_attempt": "2026-11-20T19:40:22+00:00",
+  "last_success": "2026-11-20T19:40:22+00:00",
   "ok": true,
-  "rows": 4985
+  "rows": 4986
  },
  "fund:VGT": {
   "error": null,
@@ -225,226 +225,226 @@
  },
  "fund:XLK": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:40+00:00",
-  "last_success": "2026-11-19T20:02:40+00:00",
+  "last_attempt": "2026-11-20T19:40:17+00:00",
+  "last_success": "2026-11-20T19:40:17+00:00",
   "ok": true,
-  "rows": 5154
+  "rows": 5155
  },
  "kospi": {
   "error": null,
-  "last_attempt": "2026-11-19T20:03:18+00:00",
-  "last_success": "2026-11-19T20:03:18+00:00",
+  "last_attempt": "2026-11-20T19:40:44+00:00",
+  "last_success": "2026-11-20T19:40:44+00:00",
   "ok": true,
-  "rows": 1
+  "rows": 0
  },
  "mof:JGB2Y": {
   "error": null,
-  "last_attempt": "2026-11-19T20:03:10+00:00",
-  "last_success": "2026-11-19T20:03:10+00:00",
+  "last_attempt": "2026-11-20T19:40:39+00:00",
+  "last_success": "2026-11-20T19:40:39+00:00",
   "ok": true,
-  "rows": 2901
+  "rows": 2902
  },
  "prices:AMD": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:01:23+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/AMD.json",
+  "last_attempt": "2026-11-20T19:39:57+00:00",
   "last_success": "2026-11-19T20:01:23+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3011
  },
  "prices:AMZN": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:01:41+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/AMZN.json",
+  "last_attempt": "2026-11-20T19:39:59+00:00",
   "last_success": "2026-11-19T20:01:41+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3011
  },
  "prices:AVGO": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:01:20+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/AVGO.json",
+  "last_attempt": "2026-11-20T19:39:57+00:00",
   "last_success": "2026-11-19T20:01:20+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3012
  },
  "prices:EWJ": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:02:26+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/EWJ.json",
+  "last_attempt": "2026-11-20T19:40:07+00:00",
   "last_success": "2026-11-19T20:02:26+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3013
  },
  "prices:EWT": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:01:53+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/EWT.json",
+  "last_attempt": "2026-11-20T19:40:00+00:00",
   "last_success": "2026-11-19T20:01:53+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3012
  },
  "prices:EWY": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:01:56+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/EWY.json",
+  "last_attempt": "2026-11-20T19:40:00+00:00",
   "last_success": "2026-11-19T20:01:56+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3013
  },
  "prices:GOOGL": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:01:35+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/GOOGL.json",
+  "last_attempt": "2026-11-20T19:39:58+00:00",
   "last_success": "2026-11-19T20:01:35+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3012
  },
  "prices:IGV": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:02:10+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/IGV.json",
+  "last_attempt": "2026-11-20T19:40:04+00:00",
   "last_success": "2026-11-19T20:02:10+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3013
  },
  "prices:IVV": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:02:00+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/IVV.json",
+  "last_attempt": "2026-11-20T19:40:02+00:00",
   "last_success": "2026-11-19T20:02:00+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3012
  },
  "prices:KOSPI": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:29+00:00",
-  "last_success": "2026-11-19T20:02:29+00:00",
+  "last_attempt": "2026-11-20T19:40:08+00:00",
+  "last_success": "2026-11-20T19:40:08+00:00",
   "ok": true,
   "rows": 800
  },
  "prices:META": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:01:46+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/META.json",
+  "last_attempt": "2026-11-20T19:39:59+00:00",
   "last_success": "2026-11-19T20:01:46+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3011
  },
  "prices:MSFT": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:01:13+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/MSFT.json",
+  "last_attempt": "2026-11-20T19:39:56+00:00",
   "last_success": "2026-11-19T20:01:13+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3011
  },
  "prices:NVDA": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:01:09+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/NVDA.json",
+  "last_attempt": "2026-11-20T19:39:56+00:00",
   "last_success": "2026-11-19T20:01:09+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3011
  },
  "prices:QLD": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:02:15+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/QLD.json",
+  "last_attempt": "2026-11-20T19:40:05+00:00",
   "last_success": "2026-11-19T20:02:15+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3012
  },
  "prices:QQEW": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:01:03+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/QQEW.json",
+  "last_attempt": "2026-11-20T19:39:55+00:00",
   "last_success": "2026-11-19T20:01:03+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3011
  },
  "prices:QQQ": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:01:01+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/QQQ.json",
+  "last_attempt": "2026-11-20T19:39:54+00:00",
   "last_success": "2026-11-19T20:01:01+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3011
  },
  "prices:QQQM": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:02:03+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/QQQM.json",
+  "last_attempt": "2026-11-20T19:40:02+00:00",
   "last_success": "2026-11-19T20:02:03+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 1556
  },
  "prices:ROM": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:02:21+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/ROM.json",
+  "last_attempt": "2026-11-20T19:40:06+00:00",
   "last_success": "2026-11-19T20:02:21+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3013
  },
  "prices:RSP": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:00:57+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/RSP.json",
+  "last_attempt": "2026-11-20T19:39:54+00:00",
   "last_success": "2026-11-19T20:00:57+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3013
  },
  "prices:SMH": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:01:07+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/SMH.json",
+  "last_attempt": "2026-11-20T19:39:55+00:00",
   "last_success": "2026-11-19T20:01:07+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3012
  },
  "prices:SOXL": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:02:22+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/SOXL.json",
+  "last_attempt": "2026-11-20T19:40:06+00:00",
   "last_success": "2026-11-19T20:02:22+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3013
  },
  "prices:SOXX": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:02:07+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/SOXX.json",
+  "last_attempt": "2026-11-20T19:40:03+00:00",
   "last_success": "2026-11-19T20:02:07+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3012
  },
  "prices:SPY": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:00:54+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/SPY.json",
+  "last_attempt": "2026-11-20T19:39:53+00:00",
   "last_success": "2026-11-19T20:00:54+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3013
  },
  "prices:SPYM": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:01:59+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/SPYM.json",
+  "last_attempt": "2026-11-20T19:40:01+00:00",
   "last_success": "2026-11-19T20:01:59+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 2310
  },
  "prices:TAIEX": {
   "error": null,
-  "last_attempt": "2026-11-19T20:02:31+00:00",
-  "last_success": "2026-11-19T20:02:31+00:00",
+  "last_attempt": "2026-11-20T19:40:09+00:00",
+  "last_success": "2026-11-20T19:40:09+00:00",
   "ok": true,
-  "rows": 14
+  "rows": 15
  },
  "prices:TECL": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:02:25+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/TECL.json",
+  "last_attempt": "2026-11-20T19:40:07+00:00",
   "last_success": "2026-11-19T20:02:25+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3012
  },
  "prices:TQQQ": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:02:11+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/TQQQ.json",
+  "last_attempt": "2026-11-20T19:40:04+00:00",
   "last_success": "2026-11-19T20:02:11+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3011
  },
  "prices:TSM": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:01:28+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/TSM.json",
+  "last_attempt": "2026-11-20T19:39:58+00:00",
   "last_success": "2026-11-19T20:01:28+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3013
  },
  "prices:USD": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:02:19+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/USD.json",
+  "last_attempt": "2026-11-20T19:40:05+00:00",
   "last_success": "2026-11-19T20:02:19+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3012
  },
  "prices:VGT": {
@@ -469,17 +469,17 @@
   "rows": 3003
  },
  "prices:XLK": {
-  "error": null,
-  "last_attempt": "2026-11-19T20:02:06+00:00",
+  "error": "HTTPError: 403 Client Error: Forbidden for url: https://cdn-api.cboe.com/api/global/delayed_quotes/charts/historical/XLK.json",
+  "last_attempt": "2026-11-20T19:40:03+00:00",
   "last_success": "2026-11-19T20:02:06+00:00",
-  "ok": true,
+  "ok": false,
   "rows": 3012
  },
  "twse": {
   "error": null,
-  "last_attempt": "2026-11-19T20:03:17+00:00",
-  "last_success": "2026-11-19T20:03:17+00:00",
+  "last_attempt": "2026-11-20T19:40:44+00:00",
+  "last_success": "2026-11-20T19:40:44+00:00",
   "ok": true,
-  "rows": 1
+  "rows": 0
  }
 }
